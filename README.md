@@ -26,7 +26,7 @@ The following output options could be set in template variable settings if the o
 
 Setting   | Title       | Description                                                                                 | Default
 --------- | ----------- | ------------------------------------------------------------------------------------------- | --------------
-format    | Date Format | A between day, month and year by `&#124;` separated list of strftime placeholders (see note 2). | `%e\&#124; %B \&#124;%Y`
+format    | Date Format | A between day, month and year by &#124; separated list of strftime placeholders (see note 2). | %e&#124; %B &#124;%Y
 separator | Separator   | String between the first and second part of the daterange.                                  | ` – `
 locale    | Locale      | Locale the daterange is formatted with.                                                     | 
 

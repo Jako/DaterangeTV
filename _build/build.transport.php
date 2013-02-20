@@ -32,7 +32,7 @@ set_time_limit(0);
 /* define package */
 define('PKG_NAME', 'DaterangeTV');
 define('PKG_NAME_LOWER', strtolower(PKG_NAME));
-define('PKG_VERSION', '1.0.1');
+define('PKG_VERSION', '1.1');
 define('PKG_RELEASE', 'pl');
 
 /* define sources */
@@ -90,6 +90,17 @@ if (is_array($plugins)) {
 $modx->log(modX::LOG_LEVEL_INFO, 'Packaged in ' . count($plugins) . ' plugins.');
 flush();
 unset($plugins);
+
+/* add snippets */
+$snippets = include $sources['data'] . 'transport.snippets.php';
+if (is_array($snippets)) {
+	$category->addMany($snippets, 'Snippets');
+} else {
+	$modx->log(modX::LOG_LEVEL_FATAL, 'Adding snippets failed.');
+}
+$modx->log(modX::LOG_LEVEL_INFO, 'Packaged in ' . count($snippets) . ' snippets.');
+flush();
+unset($snippets);
 
 /* create category vehicle */
 $attr = array(

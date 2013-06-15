@@ -29,12 +29,12 @@ if (!class_exists('DaterangeInputRender')) {
 
 		public function getTemplate() {
 			$corePath = $this->modx->getOption('daterangetv.core_path', null, $this->modx->getOption('core_path') . 'components/daterangetv/');
-			return $corePath . 'templates/tv/input/daterange.tpl';
+			return $corePath . 'tv/input/tpl/daterange.tpl';
 		}
 
 		public function process($value, array $params = array()) {
 			$dateFormat = $this->modx->getOption('date_format', $params, $this->modx->getOption('manager_date_format'));
-			
+
 			// set daterange value
 			$daterange = array();
 			if (strpos($value, '||')) {

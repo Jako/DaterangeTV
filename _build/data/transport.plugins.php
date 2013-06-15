@@ -33,7 +33,7 @@ $plugins[0]->set('description', 'Tell MODX to check these directories for Datera
 $plugins[0]->set('plugincode', getSnippetContent($sources['plugins'] . 'daterange.plugin.php'));
 $plugins[0]->set('category', 0);
 
-$events = include $sources['events'] . 'events.daterange.php';
+$events = include $sources['events'] . 'daterange.events.php';
 if (is_array($events) && !empty($events)) {
 	$plugins[0]->addMany($events);
 	$modx->log(xPDO::LOG_LEVEL_INFO, 'Packaged in ' . count($events) . ' Plugin events for Daterange TV.');

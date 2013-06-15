@@ -28,19 +28,19 @@ $modx->lexicon->load('daterangetv:tvrenders');
 $corePath = $modx->getOption('daterangetv.core_path', null, $modx->getOption('core_path') . 'components/daterangetv/');
 switch ($modx->event->name) {
 	case 'OnTVInputRenderList': {
-			$modx->event->output($corePath . 'elements/tv/input/');
+			$modx->event->output($corePath . 'tv/input/');
 			break;
 		}
 	case 'OnTVOutputRenderList': {
-			$modx->event->output($corePath . 'elements/tv/output/');
+			$modx->event->output($corePath . 'tv/output/');
 			break;
 		}
 	case 'OnTVInputPropertiesList': {
-			$modx->event->output($corePath . 'elements/tv/properties/input/');
+			$modx->event->output($corePath . 'tv/inputoptions/');
 			break;
 		}
 	case 'OnTVOutputRenderPropertiesList': {
-			$modx->event->output($corePath . 'elements/tv/properties/output/');
+			$modx->event->output($corePath . 'tv/properties/');
 			break;
 		}
 	case 'OnManagerPageBeforeRender': {

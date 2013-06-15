@@ -23,12 +23,11 @@
  *
  * Output Properties for Daterange TV
  */
-$modx->lexicon->load('tv_widget','daterangetv:tvrenders');
-$lang = $modx->lexicon->fetch('daterangetv.',true);
+$modx->lexicon->load('tv_widget', 'daterangetv:tvrenders');
+$lang = $modx->lexicon->fetch('daterangetv.', true);
 
-$modx->smarty->assign('daterangetv',$lang);
+$modx->smarty->assign('daterangetv', $lang);
 
-$corePath = $modx->getOption('daterangetv.core_path',null,$modx->getOption('core_path').'components/daterangetv/');
-return $modx->smarty->fetch($corePath.'templates/tv/properties/output/daterange.tpl');
-
+$corePath = $modx->getOption('daterangetv.core_path', null, $modx->getOption('core_path') . 'components/daterangetv/');
+return $modx->smarty->fetch($corePath . 'tv/properties/tpl/daterange.tpl');
 ?>

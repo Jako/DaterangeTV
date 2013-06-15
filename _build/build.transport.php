@@ -41,9 +41,9 @@ $sources = array(
 	'root' => $root,
 	'build' => $root . '_build/',
 	'data' => $root . '_build/data/',
+    'events' => $root . '_build/data/events/',
 	'resolvers' => $root . '_build/resolvers/',
 	'properties' => $root . '_build/data/properties/',
-	'events' => $root . '_build/data/events/',
 	'permissions' => $root . '_build/data/permissions/',
 	'chunks' => $root . 'core/components/' . PKG_NAME_LOWER . '/elements/chunks/',
 	'snippets' => $root . 'core/components/' . PKG_NAME_LOWER . '/elements/snippets/',
@@ -80,27 +80,29 @@ $category->set('category', PKG_NAME);
 $modx->log(modX::LOG_LEVEL_INFO, 'Packaged in category.');
 flush();
 
-/* add plugins */
-$plugins = include $sources['data'] . 'transport.plugins.php';
-if (is_array($plugins)) {
-	$category->addMany($plugins, 'Plugins');
-} else {
-	$modx->log(modX::LOG_LEVEL_FATAL, 'Adding plugins failed.');
-}
-$modx->log(modX::LOG_LEVEL_INFO, 'Packaged in ' . count($plugins) . ' plugins.');
-flush();
-unset($plugins);
-
 /* add snippets */
 $snippets = include $sources['data'] . 'transport.snippets.php';
 if (is_array($snippets)) {
 	$category->addMany($snippets, 'Snippets');
 } else {
-	$modx->log(modX::LOG_LEVEL_FATAL, 'Adding snippets failed.');
+	$snippets = array();
+	$modx->log(modX::LOG_LEVEL_ERROR, 'No snippets defined.');
 }
 $modx->log(modX::LOG_LEVEL_INFO, 'Packaged in ' . count($snippets) . ' snippets.');
 flush();
 unset($snippets);
+
+/* add plugins */
+$plugins = include $sources['data'] . 'transport.plugins.php';
+if (is_array($plugins)) {
+	$category->addMany($plugins, 'Plugins');
+} else {
+	$plugins = array();
+	$modx->log(modX::LOG_LEVEL_ERROR, 'No plugins defined.');
+}
+$modx->log(modX::LOG_LEVEL_INFO, 'Packaged in ' . count($plugins) . ' plugins.');
+flush();
+unset($plugins);
 
 /* create category vehicle */
 $attr = array(
@@ -130,7 +132,7 @@ $attr = array(
 	)
 );
 $vehicle = $builder->createVehicle($category, $attr);
-unset($attr);
+unset($category, $attr);
 
 $modx->log(modX::LOG_LEVEL_INFO, 'Adding file resolvers ...');
 $vehicle->resolve('file', array(
@@ -141,8 +143,26 @@ $modx->log(modX::LOG_LEVEL_INFO, 'Packaged in folders.');
 flush();
 $builder->putVehicle($vehicle);
 
+/* load system settings */
+$settings = include $sources['data'] . 'transport.settings.php';
+if (!is_array($settings)) {
+	$modx->log(modX::LOG_LEVEL_ERROR, 'No settings defined.');
+} else {
+	$attr = array(
+		xPDOTransport::UNIQUE_KEY => 'key',
+		xPDOTransport::PRESERVE_KEYS => true,
+		xPDOTransport::UPDATE_OBJECT => false,
+	);
+	foreach ($settings as $setting) {
+		$vehicle = $builder->createVehicle($setting, $attr);
+		$builder->putVehicle($vehicle);
+	}
+	$modx->log(modX::LOG_LEVEL_INFO, 'Packaged in ' . count($settings) . ' System Settings.');
+}
+unset($settings, $setting, $attr);
+
 /* now pack in the license file, readme and changelog */
-$modx->log(modX::LOG_LEVEL_INFO, 'Adding package attributes and setup options ...');
+$modx->log(modX::LOG_LEVEL_INFO, 'Added package attributes and setup options.');
 $builder->setPackageAttributes(array(
 	'license' => file_get_contents($sources['docs'] . 'license.txt'),
 	'readme' => file_get_contents($sources['docs'] . 'readme.txt'),

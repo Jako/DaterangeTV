@@ -41,7 +41,7 @@ If output options for the custom tv could not be set (i.e. inside of MIGX) a sni
 The snippet could work as an output filter, but the options have to be a json encoded array:
 
 ```
-[[*daterangetv:daterange=`{"format":"%d|%m.|%Y","separator"="–","locale"="de_DE.utf8"}`]]
+[[*daterangetv:daterange=`{"format":"%d|%m.|%Y","separator":"–","locale":"de_DE.utf8"}`]]
 ```
 
 Notes

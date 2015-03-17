@@ -22,20 +22,25 @@ Date Format | The format must be valid according to Date.parseDate.             
 
 Output Options
 --------------------------------------------------------------------------------
-The following output options could be set in template variable settings if the output type is set to `Date Range (From <> To)`. Another possibility is to assign the settings as properties to the MODX tag (see note 1).
+The following output options could be set in template variable settings if the output type is set to `Date Range (From <> To)`. Another possibility is to assign the settings as properties to the MODX tag (see note 2).
 
 Setting   | Title       | Description                                                                                   | Default
 --------- | ----------- | --------------------------------------------------------------------------------------------- | --------------
-format    | Date Format | A between day, month and year by &#124; separated list of strftime placeholders (see note 2). | %e&#124; %B &#124;%Y
+format    | Date Format | A between day, month and year by &#124; separated list of strftime placeholders (see note 3). | %e&#124; %B &#124;%Y
 separator | Separator   | String between the first and second part of the daterange.                                    | ` – `
-locale    | Locale      | Locale the daterange strings are formatted with.                                              | 
+locale    | Locale      | Locale the daterange strings are formatted with.                                              | MODX `locale` system setting
 
 Snippet/Output filter
 --------------------------------------------------------------------------------
 If output options for the custom tv could not be set (i.e. inside of MIGX) a snippet or an output filter could be used. The snippet has the same properties as the settings for the custom template variable output optiona and a value property. So the following snippet call could be used:
 
 ```
-[[daterange? &value=`2013-01-01||2013-01-02` &format=`%d|%m.|%Y` &separator=`–` &locale=`de_DE.utf8`]]
+[[daterange? 
+&value=`2013-01-01||2013-01-02` 
+&format=`%d|%m.|%Y` 
+&separator=`–` 
+&locale=`de_DE.utf8`
+]]
 ```
 
 The snippet could work as an output filter, but the options have to be a json encoded array:
@@ -47,6 +52,7 @@ The snippet could work as an output filter, but the options have to be a json en
 Notes
 --------------------------------------------------------------------------------
 
-1. The daterange template tariable could be formatted in template or template chunks with the following tag syntax:
+1. The value of a daterange template variable contains two date strings in the format Y-m-d separated by two vertical lines `|`
+2. The daterange template tariable could be formatted in template or template chunks with the following tag syntax:
 ```[[*tvname?format=`%e| %B |%Y`&locale=`de_DE.utf8`]]```
-2. If the output type is set to `Date Range (From <> To)` the output will be formatted removing equal days and months (and years - by showing only the start date).
+3. If the output type is set to `Date Range (From <> To)` the output will be formatted removing equal days and months (and years - by showing only the start date).

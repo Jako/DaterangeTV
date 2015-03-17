@@ -38,8 +38,8 @@ format    | Date Format | A between day, month and year by |        | %e| %B |%Y
           |             | (see note 2).                             |
 separator | Separator   | String between the first and second part  | ' – '
           |             | of the daterange.                         | 
-locale    | Locale      | Locale the daterange strings are          | -
-          |             | formatted with.                           | 
+locale    | Locale      | Locale the daterange strings are          | MODX locale
+          |             | formatted with.                           | system setting
 
 Snippet/Output filter
 --------------------------------------------------------------------------------
@@ -50,7 +50,7 @@ property. So the following snippet call could be used:
 
 [[daterange? &value=`2013-01-01||2013-01-02` &format=`%d|%m.|%Y` &separator=`–` &locale=`de_DE.utf8`]]
 
-The snippet could work as an output filter, but the options have to be a json 
+The snippet could work as an output filter, but then the options have to be a json
 encoded array:
 
 [[*daterangetv:daterange=`{"format":"%d|%m.|%Y","separator"="–","locale"="de_DE.utf8"}`]]

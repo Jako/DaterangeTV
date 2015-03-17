@@ -1,27 +1,9 @@
 <?php
 /**
- * Daterange TV
- *
- * Copyright 2013 by Thomas Jakobi <thomas.jakobi@partout.info>
- *
- * Daterange TV is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the Free
- * Software Foundation; either version 2 of the License, or (at your option) any
- * later version.
- *
- * Daterange TV is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- *
- * You should have received a copy of the GNU General Public License along with
- * DaterangeTV; if not, write to the Free Software Foundation, Inc., 59
- * Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ * English Language for Daterange TV
  *
  * @package daterangetv
  * @subpackage language
- *
- * English Language for Daterange TV
  */
 $_lang['daterange'] = 'Date Range (From <> To)';
 $_lang['daterangetv.from'] = 'From Date';
@@ -35,6 +17,4 @@ $_lang['daterangetv.dateOutputFormatDesc'] = 'A between day, month and year by <
 $_lang['daterangetv.separatorOutput'] = 'Separator';
 $_lang['daterangetv.separatorOutputDesc'] = 'String between the first and second part of the daterange.';
 $_lang['daterangetv.localeOutput'] = 'Locale';
-$_lang['daterangetv.localeOutputDesc'] = '<a href="http://php.net/manual/de/function.setlocale.php">Locale</a> the daterange is formatted with.';
-
-?>
+$_lang['daterangetv.localeOutputDesc'] = '<a href="http://php.net/manual/de/function.setlocale.php">Locale</a> the daterange is formatted with. Defaults to MODX locale system setting.';

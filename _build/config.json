@@ -1,0 +1,54 @@
+{
+  "name": "DaterangeTV",
+  "lowCaseName": "daterangetv",
+  "description": "Switch resource templates on the fly",
+  "author": "Thomas Jakobi",
+  "version": "1.1.1",
+  "package": {
+    "elements": {
+      "plugins": [
+        {
+          "name": "DaterangeTV",
+          "file": "daterange.plugin.php",
+          "events": [
+            "OnTVInputRenderList",
+            "OnTVOutputRenderList",
+            "OnTVInputPropertiesList",
+            "OnTVOutputRenderPropertiesList"
+          ]
+        }
+      ],
+      "snippets": [
+        {
+          "name": "daterange",
+          "description": "Format a daterange custom template variable",
+          "file": "daterange.snippet.php",
+          "properties": [
+            {
+              "name": "value",
+              "value": ""
+            },
+            {
+              "name": "format",
+              "value": "%e| %B |%Y"
+            },
+            {
+              "name": "separator",
+              "value": " – "
+            },
+            {
+              "name": "locale",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "build": {
+    "readme": "docs/readme.txt",
+    "license": "docs/license.txt",
+    "changelog": "docs/changelog.txt",
+    "resolver": {}
+  }
+}

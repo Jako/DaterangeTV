@@ -1,8 +1,8 @@
 <?php
 /**
- * Daterange TV
+ * Plugin Render for Daterange TV
  *
- * Copyright 2013 by Thomas Jakobi <thomas.jakobi@partout.info>
+ * Copyright 2013-2015 by Thomas Jakobi <thomas.jakobi@partout.info>
  *
  * Daterange TV is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -20,31 +20,26 @@
  *
  * @package daterangetv
  * @subpackage plugin
- *
- * Plugins for Daterange TV
  */
 $modx->lexicon->load('daterangetv:tvrenders');
 
 $corePath = $modx->getOption('daterangetv.core_path', null, $modx->getOption('core_path') . 'components/daterangetv/');
 switch ($modx->event->name) {
-	case 'OnTVInputRenderList': {
-			$modx->event->output($corePath . 'tv/input/');
-			break;
-		}
-	case 'OnTVOutputRenderList': {
-			$modx->event->output($corePath . 'tv/output/');
-			break;
-		}
-	case 'OnTVInputPropertiesList': {
-			$modx->event->output($corePath . 'tv/inputoptions/');
-			break;
-		}
-	case 'OnTVOutputRenderPropertiesList': {
-			$modx->event->output($corePath . 'tv/properties/');
-			break;
-		}
-	case 'OnManagerPageBeforeRender': {
-			break;
-		}
+    case 'OnTVInputRenderList': {
+        $modx->event->output($corePath . 'tv/input/');
+        break;
+    }
+    case 'OnTVOutputRenderList': {
+        $modx->event->output($corePath . 'tv/output/');
+        break;
+    }
+    case 'OnTVInputPropertiesList': {
+        $modx->event->output($corePath . 'tv/inputoptions/');
+        break;
+    }
+    case 'OnTVOutputRenderPropertiesList': {
+        $modx->event->output($corePath . 'tv/properties/');
+        break;
+    }
 }
 ?>

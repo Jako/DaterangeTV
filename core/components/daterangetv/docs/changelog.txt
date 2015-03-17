@@ -1,6 +1,9 @@
 Changelog
 ================================================================================
 
+- 1.1.1
+    - Snippet/TV locale setting defaults to MODX locale system setting
+
 - 1.1
     - Added snippet/output filter
 

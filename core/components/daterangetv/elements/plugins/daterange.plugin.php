@@ -1,45 +1,40 @@
 <?php
 /**
- * Plugin Render for Daterange TV
- *
- * Copyright 2013-2015 by Thomas Jakobi <thomas.jakobi@partout.info>
- *
- * Daterange TV is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the Free
- * Software Foundation; either version 2 of the License, or (at your option) any
- * later version.
- *
- * Daterange TV is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- *
- * You should have received a copy of the GNU General Public License along with
- * DaterangeTV; if not, write to the Free Software Foundation, Inc., 59
- * Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ * Daterange TV runtime hooks - registers custom TV input & output types
+ * and includes javascripts on document edit pages so that the TV
+ * can be used from within other extras (i.e. MIGX, Collections)
  *
  * @package daterangetv
  * @subpackage plugin
+ *
+ * @event   OnTVInputRenderList
+ * @event   OnTVOutputRenderList
+ * @event   OnTVInputPropertiesList
+ * @event   OnTVOutputRenderPropertiesList
+ * @event   OnDocFormRender
  */
+
+/** @var \modX $modx */
+$corePath = $modx->getOption('daterangetv.core_path', null, $modx->getOption('core_path') . 'components/daterangetv/');
+$assetsUrl = $modx->getOption('daterangetv.assets_url', null, $modx->getOption('assets_url') . 'components/daterangetv/');
+
 $modx->lexicon->load('daterangetv:tvrenders');
 
-$corePath = $modx->getOption('daterangetv.core_path', null, $modx->getOption('core_path') . 'components/daterangetv/');
 switch ($modx->event->name) {
-    case 'OnTVInputRenderList': {
-        $modx->event->output($corePath . 'tv/input/');
+    case 'OnTVInputRenderList':
+        $modx->event->output($corePath . 'elements/tv/input/');
         break;
-    }
-    case 'OnTVOutputRenderList': {
-        $modx->event->output($corePath . 'tv/output/');
+    case 'OnTVOutputRenderList':
+        $modx->event->output($corePath . 'elements/tv/output/');
         break;
-    }
-    case 'OnTVInputPropertiesList': {
-        $modx->event->output($corePath . 'tv/inputoptions/');
+    case 'OnTVInputPropertiesList':
+        $modx->event->output($corePath . 'elements/tv/input/options/');
         break;
-    }
-    case 'OnTVOutputRenderPropertiesList': {
-        $modx->event->output($corePath . 'tv/properties/');
+    case 'OnTVOutputRenderPropertiesList':
+        $modx->event->output($corePath . 'elements/tv/output/options/');
         break;
-    }
-}
-?>
+    case 'OnDocFormRender':
+        $modx->regClientStartupScript($assetsUrl . 'mgr/js/daterangetv.js');
+        $modx->regClientStartupScript($assetsUrl . 'mgr/js/daterangetv.renderer.js');
+        break;
+};

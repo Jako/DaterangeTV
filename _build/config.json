@@ -1,9 +1,9 @@
 {
   "name": "DaterangeTV",
   "lowCaseName": "daterangetv",
-  "description": "Switch resource templates on the fly",
+  "description": "Date range custom template variable",
   "author": "Thomas Jakobi",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "package": {
     "elements": {
       "plugins": [
@@ -14,7 +14,8 @@
             "OnTVInputRenderList",
             "OnTVOutputRenderList",
             "OnTVInputPropertiesList",
-            "OnTVOutputRenderPropertiesList"
+            "OnTVOutputRenderPropertiesList",
+            "OnDocFormRender"
           ]
         }
       ],
@@ -30,11 +31,11 @@
             },
             {
               "name": "format",
-              "value": "%e| %B |%Y"
+              "value": "%e.| %B |%Y"
             },
             {
               "name": "separator",
-              "value": " – "
+              "value": "&thinsp;–&thinsp;"
             },
             {
               "name": "locale",
@@ -43,12 +44,28 @@
           ]
         }
       ]
-    }
+    },
+    "systemSettings": [
+      {
+        "key": "format",
+        "area": "site",
+        "value": " %e.| %B |%Y"
+      },
+      {
+        "key": "manager_format",
+        "area": "site",
+        "value": "j.| F |Y"
+      },
+      {
+        "key": "separator",
+        "area": "site",
+        "value": "&thinsp;–&thinsp;"
+      }
+    ]
   },
   "build": {
     "readme": "docs/readme.txt",
     "license": "docs/license.txt",
-    "changelog": "docs/changelog.txt",
-    "resolver": {}
+    "changelog": "docs/changelog.txt"
   }
 }

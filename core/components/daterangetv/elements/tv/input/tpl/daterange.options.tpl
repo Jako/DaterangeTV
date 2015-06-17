@@ -1,8 +1,7 @@
 <div id="tv-input-properties-form{$tv}"></div>
-{literal}
-
 <script type="text/javascript">
     // <![CDATA[
+    {literal}
     var params = {
         {/literal}{foreach from=$params key=k item=v name='p'}
         '{$k}': '{$v|escape:"javascript"}'{if NOT $smarty.foreach.p.last}, {/if}
@@ -15,15 +14,13 @@
             }, scope: this
         }
     };
-
     MODx.load({
         xtype: 'panel',
         layout: 'form',
-        cls: 'form-with-labels',
         autoHeight: true,
+        cls: 'form-with-labels',
         border: false,
         labelAlign: 'top',
-        labelSeparator: '',
         items: [{
             xtype: 'combo-boolean',
             fieldLabel: _('required'),
@@ -31,8 +28,9 @@
             name: 'inopt_allowBlank',
             hiddenName: 'inopt_allowBlank',
             id: 'inopt_allowBlank{/literal}{$tv}{literal}',
-            value: params['allowBlank'] == 0 || params['allowBlank'] == 'false' ? false : true,
-            width: 200,
+            value: !(params['allowBlank'] == 0 || params['allowBlank'] == 'false'),
+            anchors: '98%',
+            width: '99%',
             listeners: oc
         }, {
             xtype: MODx.expandHelp ? 'label' : 'hidden',
@@ -46,7 +44,8 @@
             name: 'inopt_dateFormat',
             id: 'inopt_dateFormat{/literal}{$tv}{literal}',
             value: params['dateFormat'] || '',
-            width: 200,
+            anchors: '98%',
+            width: '99%',
             listeners: oc
         }, {
             xtype: MODx.expandHelp ? 'label' : 'hidden',

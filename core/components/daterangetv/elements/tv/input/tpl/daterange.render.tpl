@@ -62,7 +62,7 @@
             fieldLabel: '{$lang_from}',
             name: 'from{$tv->id}[]',
             id: 'from{$tv->id}',
-            format: params.dateFormat || MODx.config.manager_date_format,
+            format: params.dateFormat || MODx.config['manager_date_format'],
             dateWidth: 200,
             allowBlank: params.allowBlank,
             value: '{$daterange[0]}',
@@ -77,7 +77,7 @@
             fieldLabel: '{$lang_to}',
             name: 'to{$tv->id}[]',
             id: 'to{$tv->id}',
-            format: params.dateFormat || MODx.config.manager_date_format,
+            format: params.dateFormat || MODx.config['manager_date_format'],
             dateWidth: 200,
             allowBlank: true,
             value: '{$daterange[1]}',
@@ -87,7 +87,7 @@
             listeners: oc
             {literal}
         });
-        var daterangePanel = MODx.load({
+        MODx.load({
             {/literal}
             xtype: 'panel',
             layout: 'column',

@@ -5,16 +5,23 @@
  * @package daterangetv
  * @subpackage input render
  */
-if (!class_exists('DaterangeInputRender')) {
-
     class DaterangeInputRender extends modTemplateVarInputRender
     {
+        /**
+         * Return the template path to load
+         * @return string
+         */
         public function getTemplate()
         {
             $corePath = $this->modx->getOption('daterangetv.core_path', null, $this->modx->getOption('core_path') . 'components/daterangetv/');
-            return $corePath . 'tv/input/tpl/daterange.tpl';
+            return $corePath . 'elements/tv/input/tpl/daterange.render.tpl';
         }
 
+        /**
+         * @param string $value
+         * @param array $params
+         * @return void|mixed
+         */
         public function process($value, array $params = array())
         {
             $dateFormat = $this->modx->getOption('date_format', $params, $this->modx->getOption('manager_date_format'));
@@ -29,8 +36,7 @@ if (!class_exists('DaterangeInputRender')) {
             $this->setPlaceholder('daterange', $daterange);
 
             // fetch only the tv lexicon
-            $this->modx->lexicon->load('tv_widget');
-            $this->modx->lexicon->load('daterangetv:tvrenders');
+            $this->modx->lexicon->load('tv_widget,daterangetv:tvrenders');
             $lang = $this->modx->lexicon->fetch();
             foreach ($lang as $k => $v) {
                 if (strpos($k, 'daterangetv.') !== false) {
@@ -41,7 +47,5 @@ if (!class_exists('DaterangeInputRender')) {
             }
             $this->setPlaceholder('params', $params);
         }
-    }
 }
 return 'DaterangeInputRender';
-?>

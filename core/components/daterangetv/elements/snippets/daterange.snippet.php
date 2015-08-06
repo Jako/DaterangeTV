@@ -19,7 +19,7 @@ $daterangetv = $modx->getService('daterangetv', 'DaterangeTV', $corePath . 'mode
 // Get script properties
 $value = $modx->getOption('value', $scriptProperties, '', true);
 $tvname = $modx->getOption('tvname', $scriptProperties, '', true);
-$docid = $modx->getOption('docid', $scriptProperties, $modx->resource->get('id'), true);
+$docid = $modx->getOption('docid', $scriptProperties, ($modx->resource) ? $modx->resource->get('id') : 0, true);
 
 if (!empty($tag)) {
     // Used as output filter

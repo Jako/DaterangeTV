@@ -59,7 +59,7 @@
         };
         var fromField = new Ext.form.DateField({
             {/literal}
-            fieldLabel: '{$lang_from}',
+            fieldLabel: _('daterangetv.from'),
             name: 'from{$tv->id}[]',
             id: 'from{$tv->id}',
             format: params.dateFormat || MODx.config['manager_date_format'],
@@ -74,7 +74,7 @@
         });
         var toField = new Ext.form.DateField({
             {/literal}
-            fieldLabel: '{$lang_to}',
+            fieldLabel: _('daterangetv.to'),
             name: 'to{$tv->id}[]',
             id: 'to{$tv->id}',
             format: params.dateFormat || MODx.config['manager_date_format'],

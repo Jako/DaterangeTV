@@ -103,8 +103,8 @@ class DaterangeTV
      */
     public function includeScriptAssets()
     {
-        $this->modx->regClientStartupScript($this->options['assetsUrl'] . 'mgr/js/daterangetv.js');
-        $this->modx->regClientStartupScript($this->options['assetsUrl'] . 'mgr/js/daterangetv.renderer.js');
+        $this->modx->regClientStartupScript($this->options['assetsUrl'] . 'mgr/js/daterangetv.js?v=v' . $this->version);
+        $this->modx->regClientStartupScript($this->options['assetsUrl'] . 'mgr/js/daterangetv.renderer.js?v=v' . $this->version);
     }
 
     /**

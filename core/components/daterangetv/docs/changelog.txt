@@ -1,6 +1,8 @@
 Changelog
 ================================================================================
 
+- 1.2.1
+    - Bugfix for snippet call in manager context (i.e. MIGX column renderer)
 - 1.2
     - Added column renderer (for MIGX/Collections etc.)
     - Added default output system settings

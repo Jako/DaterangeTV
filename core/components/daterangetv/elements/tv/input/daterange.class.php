@@ -35,16 +35,10 @@
             }
             $this->setPlaceholder('daterange', $daterange);
 
-            // fetch only the tv lexicon
-            $this->modx->lexicon->load('tv_widget,daterangetv:tvrenders');
-            $lang = $this->modx->lexicon->fetch();
-            foreach ($lang as $k => $v) {
-                if (strpos($k, 'daterangetv.') !== false) {
-                    $k = str_replace('daterangetv.', '', $k);
-                    $k = str_replace('.', '_', $k);
-                }
-                $this->setPlaceholder('lang_' . $k, $v);
-            }
+            // add lexicon topic
+            $this->modx->controller->addLexiconTopic('daterangetv:tvrenders');
+
+            // set params
             $this->setPlaceholder('params', $params);
         }
 }

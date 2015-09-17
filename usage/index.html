@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+
+	<title>Usage - Dateterange Custom Template Variable</title>
+
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <link href="../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="..">Dateterange Custom Template Variable</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="..">Home</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../installation/">Installation</a>
+                </li>
+            
+            
+            
+                <li class="active">
+                    <a href="./">Usage</a>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li >
+                    <a rel="next" href="../installation/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li class="disabled">
+                    <a rel="prev" >
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/Jako/DaterangeTV">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#input-options">Input Options</a></li>
+        
+    
+        <li class="main "><a href="#output-options">Output Options</a></li>
+        
+    
+        <li class="main "><a href="#snippetoutput-filter">Snippet/Output filter</a></li>
+        
+    
+        <li class="main "><a href="#column-renderer">Column Renderer</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h2 id="input-options">Input Options</h2>
+<p>The following input options could be set in template variable settings:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Allow Blank</td>
+<td>If set to No, MODX will not allow the user to save the Resource until a valid, non-blank value has been entered in the From Date input.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Date Format</td>
+<td>The format must be valid according to <a href="http://dev.sencha.com/playpen/docs/output/Date.html">Date.parseDate</a>.</td>
+<td>Manager date format</td>
+</tr>
+</tbody>
+</table>
+<h2 id="output-options">Output Options</h2>
+<p>The following output options could be set in template variable settings if the
+output type is set to <code>Date Range (From &lt;&gt; To)</code>. Another possibility is to
+assign the settings as properties to the MODX tag<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Date Format</td>
+<td>A between day, month and year by &#124; separated list of <a href="http://php.net/manual/en/function.strftime.php">strftime</a> placeholders<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>.</td>
+<td>%e&#124; %B &#124;%Y</td>
+</tr>
+<tr>
+<td>Separator</td>
+<td>String between the first and second part of the daterange.</td>
+<td><code>–</code></td>
+</tr>
+<tr>
+<td>Locale</td>
+<td>Locale the daterange strings are formatted with.</td>
+<td>MODX <code>locale</code> system setting</td>
+</tr>
+</tbody>
+</table>
+<h2 id="snippetoutput-filter">Snippet/Output filter</h2>
+<p>If the output options for the custom tv could not be set (i.e. inside of MIGX) or if you want to use
+snippet or an output filter could be used. The snippet has the following properties:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tvname</td>
+<td>Name of the Daterange TV.</td>
+<td>-</td>
+</tr>
+<tr>
+<td>docid</td>
+<td>Resource where the Daterange TV value is received from.</td>
+<td>Current resource</td>
+</tr>
+<tr>
+<td>value</td>
+<td>Use your own value for the snippet output. The properties <code>tvname</code> and <code>docid</code> are ignored.</td>
+<td>-</td>
+</tr>
+<tr>
+<td>format</td>
+<td>A between day, month and year by &#124; separated list of <a href="http://php.net/manual/en/function.strftime.php">strftime</a> placeholders<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>.</td>
+<td>%e.&#124; %B &#124;%Y</td>
+</tr>
+<tr>
+<td>separator</td>
+<td>String between the first and second part of the daterange.</td>
+<td><code>–</code></td>
+</tr>
+<tr>
+<td>locale</td>
+<td>Locale the daterange strings are formatted with.</td>
+<td>MODX <code>locale</code> system setting</td>
+</tr>
+</tbody>
+</table>
+<p>So the following snippet call could be used:</p>
+<pre><code>[[daterange? 
+&amp;value=`2013-01-01||2013-01-02` 
+&amp;format=` %d.| %b. |%Y` 
+&amp;separator=`&amp;thinsp;–&amp;thinsp;` 
+&amp;locale=`de_DE.utf8`
+]]
+</code></pre>
+
+<p>The snippet could work as an output filter, but then the options have to be a json
+encoded array:</p>
+<pre><code>[[*daterangetv:daterange=`{&quot;format&quot;:&quot;%d|%m.|%Y&quot;,&quot;separator&quot;:&quot;–&quot;,&quot;locale&quot;:&quot;de_DE.utf8&quot;}`]]
+</code></pre>
+
+<h2 id="column-renderer">Column Renderer</h2>
+<p>The package contains a column renderer for i.e. MIGX or Collections. In Collections you have to 
+insert <code>DaterangeTV.Renderer</code> in the renderer option of the grid column.</p>
+<!-- Piwik -->
+
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//piwik.partout.info/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 17]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+<noscript><p><img src="//piwik.partout.info/piwik.php?idsite=17" style="border:0;" alt="" /></p></noscript>
+
+<!-- End Piwik Code -->
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>The daterange template tariable could be formatted in template or template chunks with the following tag syntax: <code>[[*tvname?format=`%e| %B |%Y`&amp;locale=`de_DE.utf8`]]</code>&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>If the output type is set to <code>Date Range (From &lt;&gt; To)</code> the output will be formatted removing equal days and months (and years - by showing only the start date).&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script>
+        <script src="../js/base.js"></script>
+    </body>
+</html>

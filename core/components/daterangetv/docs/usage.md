@@ -20,7 +20,7 @@ Date Format | A between day, month and year by &#124; separated list of [strftim
 Separator | String between the first and second part of the daterange. | ` – `
 Locale | Locale the daterange strings are formatted with. | MODX `locale` system setting
 
-##Snippet/Output filter
+## Snippet/Output filter
 
 If the output options for the custom tv could not be set (i.e. inside of MIGX) or if you want to use
 snippet or an output filter could be used. The snippet has the following properties:
@@ -52,12 +52,10 @@ encoded array:
 [[*daterangetv:daterange=`{"format":"%d|%m.|%Y","separator":"–","locale":"de_DE.utf8"}`]]
 ```
 
-##Column Renderer
+## Column Renderer
 
 The package contains a column renderer for i.e. MIGX or Collections. In Collections you have to 
 insert `DaterangeTV.Renderer` in the renderer option of the grid column.
-
-
 
 [^1]: The daterange template tariable could be formatted in template or template chunks with the following tag syntax: ```[[*tvname?format=`%e| %B |%Y`&locale=`de_DE.utf8`]]```
 [^2]: If the output type is set to `Date Range (From <> To)` the output will be formatted removing equal days and months (and years - by showing only the start date).

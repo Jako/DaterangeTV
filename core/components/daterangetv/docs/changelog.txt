@@ -1,14 +1,17 @@
 Changelog
-================================================================================
+=========
 
+- 1.2.2
+    - Better support for manager_date_format and daterangetv.manager_format
+    - DaterangeTV.Renderer handles invalid values better
 - 1.2.1
     - Bugfix for snippet call in manager context (i.e. MIGX column renderer)
-- 1.2
+- 1.2.0
     - Added column renderer (for MIGX/Collections etc.)
     - Added default output system settings
-- 1.1
+- 1.1.0
     - Added snippet/output filter
 - 1.0.1
     - Removed debug code
-- 1.0
+- 1.0.0
     - Initial public release for MODX Revolution

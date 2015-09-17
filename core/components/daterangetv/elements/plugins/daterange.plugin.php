@@ -36,5 +36,6 @@ switch ($modx->event->name) {
     case 'OnDocFormRender':
         $modx->regClientStartupScript($assetsUrl . 'mgr/js/daterangetv.js');
         $modx->regClientStartupScript($assetsUrl . 'mgr/js/daterangetv.renderer.js');
+        $modx->controller->addLexiconTopic('daterangetv:tvrenders');
         break;
 };

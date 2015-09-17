@@ -6,28 +6,28 @@
 <script type="text/javascript">
     // <![CDATA[
     {literal}
-    var params = {
+    var daterangeParams = {
         {/literal}{foreach from=$params key=k item=v name='p'}
         '{$k}': '{$v|escape:"javascript"}'{if NOT $smarty.foreach.p.last}, {/if}
         {/foreach}{literal}
     };
+    var daterangeFormat = daterangeParams.dateFormat || MODx.config['manager_date_format'];
 
     Ext.apply(Ext.form.VTypes, {
         daterange: function (val, field) {
             var date = field.parseDate(val);
-
             if (!date) {
                 return false;
             }
-            if (field.startDateField) {
-                var start = Ext.getCmp(field.startDateField);
+            var start = Ext.getCmp(field.startDateField);
+            var end = Ext.getCmp(field.endDateField);
+            if (start) {
                 if (!start.maxValue || (date.getTime() != start.maxValue.getTime())) {
                     start.setMaxValue(date);
                     start.validate();
                 }
             }
-            else if (field.endDateField) {
-                var end = Ext.getCmp(field.endDateField);
+            if (end) {
                 if (!end.minValue || (date.getTime() != end.minValue.getTime())) {
                     end.setMinValue(date);
                     end.validate();
@@ -42,49 +42,59 @@
     });
 
     Ext.onReady(function () {
-        var oc = {
+        var daterangeOnChange = {
             'change': {
                 fn: function () {
-                    var fromDate = new Date(Ext.getCmp('from{/literal}{$tv->id}{literal}', 'Y-m-d').getValue());
-                    var toDate = new Date(Ext.getCmp('to{/literal}{$tv->id}{literal}', 'Y-m-d').getValue());
-                    var fromToDate = fromDate.format('Y-m-d') + '||';
-                    if (toDate) {
-                        fromToDate = fromToDate + toDate.format('Y-m-d');
+                    var oldFromToDate = Ext.get('tv{/literal}{$tv->id}{literal}').getValue();
+                    var from = Ext.getCmp('from{/literal}{$tv->id}{literal}', daterangeFormat).getValue();
+                    var fromDate = new Date(from);
+                    var to = Ext.getCmp('to{/literal}{$tv->id}{literal}', daterangeFormat).getValue();
+                    var toDate = new Date(to);
+
+                    var fromToDate = '';
+                    if (from) {
+                        fromToDate = fromDate.format('Y-m-d') + '||';
+                        if (to) {
+                            fromToDate = fromToDate + toDate.format('Y-m-d');
+                        }
                     }
+
                     Ext.get('tv{/literal}{$tv->id}{literal}').set({'value': fromToDate});
-                    MODx.fireResourceFormChange();
+                    if (oldFromToDate != fromToDate) {
+                        MODx.fireResourceFormChange();
+                    }
                 },
                 scope: this
             }
         };
-        var fromField = new Ext.form.DateField({
+        var daterangeFromField = new Ext.form.DateField({
             {/literal}
             fieldLabel: _('daterangetv.from'),
             name: 'from{$tv->id}[]',
             id: 'from{$tv->id}',
-            format: params.dateFormat || MODx.config['manager_date_format'],
+            format: daterangeFormat,
             dateWidth: 200,
-            allowBlank: params.allowBlank,
+            allowBlank: daterangeParams.allowBlank,
             value: '{$daterange[0]}',
             msgTarget: 'under',
             vtype: 'daterange',
             endDateField: 'to{$tv->id}', // id of the end date field
-            listeners: oc
+            listeners: daterangeOnChange
             {literal}
         });
-        var toField = new Ext.form.DateField({
+        var daterangeToField = new Ext.form.DateField({
             {/literal}
             fieldLabel: _('daterangetv.to'),
             name: 'to{$tv->id}[]',
             id: 'to{$tv->id}',
-            format: params.dateFormat || MODx.config['manager_date_format'],
+            format: daterangeFormat,
             dateWidth: 200,
             allowBlank: true,
             value: '{$daterange[1]}',
             msgTarget: 'under',
             vtype: 'daterange',
             startDateField: 'from{$tv->id}', // id of the start date field
-            listeners: oc
+            listeners: daterangeOnChange
             {literal}
         });
         MODx.load({
@@ -101,14 +111,14 @@
                 layout: 'form',
                 labelAlign: 'top',
                 border: false,
-                items: [fromField]
+                items: [daterangeFromField]
             }, {
                 xtype: 'panel',
                 columnWidth: .5,
                 layout: 'form',
                 labelAlign: 'top',
                 border: false,
-                items: [toField]
+                items: [daterangeToField]
             }],
             renderTo: 'modx-daterange-tv{$tv->id}{literal}'
         });

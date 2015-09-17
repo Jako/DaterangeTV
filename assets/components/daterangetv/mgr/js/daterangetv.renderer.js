@@ -18,10 +18,8 @@ DaterangeTV.Renderer = function (value) {
     var separator = MODx.config['daterangetv.separator'];
     var result = '';
 
-    if (start) {
-        if (!end) {
-            result = Ext.util.Format.date(start, format[0] + format[1] + format[2]);
-        } else {
+    if (start && start.getTime() === start.getTime()) {
+        if (end && end.getTime() === end.getTime()) {
             if (start.getFullYear() != end.getFullYear()) {
                 result = Ext.util.Format.date(start, format[0] + format[1] + format[2]) + separator + Ext.util.Format.date(end, format[0] + format[1] + format[2]);
             } else {
@@ -35,8 +33,9 @@ DaterangeTV.Renderer = function (value) {
                     }
                 }
             }
+        } else {
+            result = Ext.util.Format.date(start, format[0] + format[1] + format[2]);
         }
-
     }
     return result;
 };

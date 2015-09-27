@@ -18,6 +18,10 @@
 $corePath = $modx->getOption('daterangetv.core_path', null, $modx->getOption('core_path') . 'components/daterangetv/');
 $assetsUrl = $modx->getOption('daterangetv.assets_url', null, $modx->getOption('assets_url') . 'components/daterangetv/');
 
+$daterangetv = $modx->getService('daterangetv', 'DaterangeTV', $corePath . 'model/daterangetv/', array(
+    'core_path' => $corePath
+));
+
 $modx->lexicon->load('daterangetv:tvrenders');
 
 switch ($modx->event->name) {
@@ -34,8 +38,7 @@ switch ($modx->event->name) {
         $modx->event->output($corePath . 'elements/tv/output/options/');
         break;
     case 'OnDocFormRender':
-        $modx->regClientStartupScript($assetsUrl . 'mgr/js/daterangetv.js');
-        $modx->regClientStartupScript($assetsUrl . 'mgr/js/daterangetv.renderer.js');
+        $daterangetv->includeScriptAssets();
         $modx->controller->addLexiconTopic('daterangetv:tvrenders');
         break;
 };

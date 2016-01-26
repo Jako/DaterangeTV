@@ -117,15 +117,21 @@ class DaterangeTV
     {
         $format = $this->getOption('format', $properties);
         $format_trimmed = trim(str_replace('%', '', $format));
+        $dayPos = false;
+        $monthPos = false;
         
         if(preg_match('/(a|A|d|e|j|u|w)/', $format_trimmed, $dayformat, PREG_OFFSET_CAPTURE)===1){
             $dayPos = $dayformat[0][1];
+        } else {
+            $this->modx->log(modX::LOG_LEVEL_ERROR, 'A valid strftime DAY format has not been specified or an incorrect syntax was used.');
         }
         if(preg_match('/(b|B|h|m)/', $format_trimmed, $monthformat, PREG_OFFSET_CAPTURE)===1){
             $monthPos = $monthformat[0][1];
+        } else {
+            $this->modx->log(modX::LOG_LEVEL_ERROR, 'A valid strftime MONTH format has not been specified or an incorrect syntax was used.');
         }
         
-        $daysBeforeMonths = $monthPos > $dayPos ? true : false ;
+        $daysBeforeMonths = $dayPos !== false && $monthPos !== false && ($monthPos > $dayPos) ? true : false ;
         $yearsFirst = $monthPos === 0 || $dayPos === 0 ? false : true ;
 
         $separator = $this->getOption('separator', $properties);

@@ -24,7 +24,7 @@ class DaterangeTV
      * The version
      * @var string $version
      */
-    public $version = '1.2.2';
+    public $version = '1.2.0';
 
     /**
      * The class options
@@ -116,18 +116,35 @@ class DaterangeTV
     public function getDaterange($value, $properties = array())
     {
         $format = $this->getOption('format', $properties);
+        $format_trimmed = trim(str_replace('%', '', $format));
+        
+        if(preg_match('/(a|A|d|e|j|u|w)/', $format_trimmed, $dayformat, PREG_OFFSET_CAPTURE)===1){
+            $dayPos = $dayformat[0][1];
+        }
+        if(preg_match('/(b|B|h|m)/', $format_trimmed, $monthformat, PREG_OFFSET_CAPTURE)===1){
+            $monthPos = $monthformat[0][1];
+        }
+        
+        $daysBeforeMonths = $monthPos > $dayPos ? true : false ;
+        $yearsFirst = $monthPos === 0 || $dayPos === 0 ? false : true ;
+
         $separator = $this->getOption('separator', $properties);
         $locale = $this->getOption('locale', $properties, false);
-
+        
         $format = explode('|', $format);
+        
+        /*
+        // @smg6511: not sure how this would result in a different array than above...
         if (count($format) != 3) {
             $format = explode('|', $this->getOption('format'));
         }
+        */
 
         // get value
         $daterange = explode('||', $value);
-        $daterange[0] = (isset($daterange[0]) && $daterange[0] != '') ? intval(strtotime($daterange[0])) : 0;
-        $daterange[1] = (isset($daterange[1]) && $daterange[1] != '') ? intval(strtotime($daterange[1])) : 0;
+        $start = (isset($daterange[0]) && $daterange[0] != '') ? intval(strtotime($daterange[0])) : 0;
+        $end = (isset($daterange[1]) && $daterange[1] != '') ? intval(strtotime($daterange[1])) : 0;
+        $result = '';
 
         // set locale
         if ($locale) {
@@ -138,29 +155,42 @@ class DaterangeTV
         }
 
         // calculate daterange output
-        if (intval($daterange[1]) > intval($daterange[0])) {
-            $end = trim(strftime($format[0] . $format[1] . $format[2], $daterange[1]));
+        if (intval($end) > intval($start)) {
+            $start_day = date('d', $start);
+            $start_month = date('m', $start);
+            $start_year = date('Y', $start);
 
-            $start_day = date('d', $daterange[0]);
-            $start_month = date('m', $daterange[0]);
-            $start_year = date('Y', $daterange[0]);
-
-            $end_day = date('d', $daterange[1]);
-            $end_month = date('m', $daterange[1]);
-            $end_year = date('Y', $daterange[1]);
+            $end_day = date('d', $end);
+            $end_month = date('m', $end);
+            $end_year = date('Y', $end);
 
             if ($start_year != $end_year) {
-                $start = trim(strftime($format[0] . $format[1] . $format[2], $daterange[0])) . $separator;
+                $result  = trim(strftime($format[0] . $format[1] . $format[2], $start)) . $separator . trim(strftime($format[0] . $format[1] . $format[2], $end));
             } elseif ($start_month != $end_month) {
-                $start = trim(strftime($format[0] . $format[1], $daterange[0])) . $separator;
+                if ($yearsFirst){
+                    $result = trim(strftime($format[0] . $format[1] . $format[2], $start)) . $separator . trim(strftime($format[1] . $format[2], $end));
+                } else {
+                    $result = trim(strftime($format[0] . $format[1], $start)) . $separator . trim(strftime($format[0] . $format[1] . $format[2], $end));
+                }
             } elseif ($start_day != $end_day) {
-                $start = trim(strftime($format[0], $daterange[0])) . $separator;
+                if ($yearsFirst){
+                    if ($daysBeforeMonths){
+                        $result = trim(strftime($format[0] . $format[1], $start)) . $separator . trim(strftime($format[1] . $format[2], $end));
+                    } else {
+                        $result = trim(strftime($format[0] . $format[1] . $format[2], $start)) . $separator . trim(strftime($format[2], $end));
+                    }
+                } else {
+                    if ($daysBeforeMonths){
+                        $result = trim(strftime($format[0], $start)) . $separator . trim(strftime($format[0] . $format[1] . $format[2], $end));
+                    } else {
+                       $result = trim(strftime($format[0] . $format[1], $start)) . $separator . trim(strftime($format[1] . $format[2], $end)); 
+                    }
+                }
             } else {
-                $start = '';
+                $result = trim(strftime($format[0] . $format[1] . $format[2], $start));
             }
-            $output = $start . $end;
         } else {
-            $output = trim(strftime($format[0] . $format[1] . $format[2], $daterange[0]));
+            $result = trim(strftime($format[0] . $format[1] . $format[2], $start));
         }
 
         // reset locale
@@ -169,6 +199,6 @@ class DaterangeTV
                 $this->modx->log(modX::LOG_LEVEL_DEBUG, 'DaterangeTV: Old locale ' . $currentLocale . 'not valid!');
             }
         }
-        return ($output);
+        return ($result);
     }
 }

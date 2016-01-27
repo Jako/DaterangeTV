@@ -44,7 +44,7 @@ DaterangeTV.Renderer = function (value) {
                         result = Ext.util.Format.date(start, format[0] + format[1]) + separator + Ext.util.Format.date(end, format[0] + format[1] + format[2]);
                     }
                 } else {
-                    if (start.getDay() != end.getDay()) {
+                    if (start.getDate() != end.getDate()) {
                         if (yearsFirst){
                             if(daysBeforeMonths){
                                 result = Ext.util.Format.date(start, format[0] + format[1]) + separator + Ext.util.Format.date(end, format[1] + format[2]);

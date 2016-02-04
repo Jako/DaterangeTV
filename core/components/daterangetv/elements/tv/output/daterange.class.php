@@ -21,7 +21,7 @@ class DaterangeOutputRender extends modTemplateVarOutputRender
             'core_path' => $corePath
         ));
 
-        $properties = array_merge($params, $this->tv->_properties);
+        $properties = array_merge($params, (is_array($this->tv->_properties)) ? $this->tv->_properties : array());
         return $daterangetv->getDaterange($value, $properties);
     }
 }

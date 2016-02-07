@@ -19,7 +19,7 @@ $daterangetv = $modx->getService('daterangetv', 'DaterangeTV', $corePath . 'mode
 // Get script properties
 $value = $modx->getOption('value', $scriptProperties, '', true);
 $tvname = $modx->getOption('tvname', $scriptProperties, '', true);
-$docid = $modx->getOption('docid', $scriptProperties, ($modx->resource) ? $modx->resource->get('id') : 0, true);
+$docid = $modx->getOption('docid', $scriptProperties, (($modx->resource) ? $modx->resource->get('id') : 0), true);
 
 if (!empty($tag)) {
     // Used as output filter
@@ -33,7 +33,7 @@ if (!$value) {
         // Get the raw content of the TV
         $value = $tv->getValue($docid);
     } else {
-        $modx->log(xPDO::LOG_LEVEL_ERROR, "[DaterangeTV+] Template Variable '{$tvname}' not found.");
+        $modx->log(xPDO::LOG_LEVEL_ERROR, "Template Variable '{$tvname}' not found.", '', 'DaterangeTV');
     }
 }
 

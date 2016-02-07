@@ -24,7 +24,7 @@ class DaterangeTV
      * The version
      * @var string $version
      */
-    public $version = '1.2.2';
+    public $version = '1.2.3';
 
     /**
      * The class options
@@ -99,6 +99,38 @@ class DaterangeTV
     }
 
     /**
+     * Gets an option through $this->getOption and cast the value to a true boolean automatically,
+     * including strings "false", "true", "yes" and "no".
+     *
+     * @param string $name
+     * @param array $options
+     * @param bool $default
+     * @return bool
+     */
+    public function getBooleanOption($name, array $options = null, $default = null)
+    {
+        $option = $this->getOption($name, $options, $default);
+        return $this->castValueToBool($option);
+    }
+
+    /**
+     * Turns a value into a boolean. This checks for "false", "true", "yes" and "no" strings,
+     * as well as anything PHP can automatically cast to a boolean value.
+     *
+     * @param $value
+     * @return bool
+     */
+    public function castValueToBool($value)
+    {
+        if (in_array(strtolower($value), array('false', 'no'))) {
+            return false;
+        } elseif (in_array(strtolower($value), array('true', 'yes'))) {
+            return true;
+        }
+        return (bool)$value;
+    }
+
+    /**
      * Render supporting javascript to try and help it work with MIGX etc
      */
     public function includeScriptAssets()
@@ -116,6 +148,36 @@ class DaterangeTV
     public function getDaterange($value, $properties = array())
     {
         $format = $this->getOption('format', $properties);
+        $debug = $this->getBooleanOption('debug', $properties, false);
+
+        if (preg_match('/(d|e|j)/', $format, $dayformat, PREG_OFFSET_CAPTURE) === 1) {
+            $dayPos = $dayformat[0][1];
+        } else {
+            $dayPos = false;
+            if ($debug) {
+                $this->modx->log(modX::LOG_LEVEL_ERROR, 'A valid strftime day format (%d, %e or %j) has not been specified or an incorrect syntax was used in the format string.', '', 'DaterangeTV');
+            }
+        }
+        if (preg_match('/(b|B|h|m)/', $format, $monthformat, PREG_OFFSET_CAPTURE) === 1) {
+            $monthPos = $monthformat[0][1];
+        } else {
+            $monthPos = false;
+            if ($debug) {
+                $this->modx->log(modX::LOG_LEVEL_ERROR, 'A valid strftime month format (%b, %B, %h or %m) has not been specified or an incorrect syntax was used in the format string.', '', 'DaterangeTV');
+            }
+        }
+        if (preg_match('/(Y|y|G|g|C)/', $format, $yearformat, PREG_OFFSET_CAPTURE) === 1) {
+            $yearPos = $yearformat[0][1];
+        } else {
+            $yearPos = false;
+            if ($debug) {
+                $this->modx->log(modX::LOG_LEVEL_ERROR, 'A valid strftime year format (%Y, %y, %G, %g or %C) has not been specified or an incorrect syntax was used in the format string.', '', 'DaterangeTV');
+            }
+        }
+
+        $daysBeforeMonths = ($dayPos !== false && $monthPos !== false && ($monthPos > $dayPos)) ? true : false;
+        $yearsFirst = ($dayPos === false || $monthPos === false || $yearPos === false || $yearPos > $monthPos || $yearPos > $dayPos) ? false : true;
+
         $separator = $this->getOption('separator', $properties);
         $locale = $this->getOption('locale', $properties, false);
 
@@ -126,47 +188,60 @@ class DaterangeTV
 
         // get value
         $daterange = explode('||', $value);
-        $daterange[0] = (isset($daterange[0]) && $daterange[0] != '') ? intval(strtotime($daterange[0])) : 0;
-        $daterange[1] = (isset($daterange[1]) && $daterange[1] != '') ? intval(strtotime($daterange[1])) : 0;
+        $start = (isset($daterange[0]) && $daterange[0] != '') ? intval(strtotime($daterange[0])) : 0;
+        $end = (isset($daterange[1]) && $daterange[1] != '') ? intval(strtotime($daterange[1])) : 0;
 
         // set locale
         if ($locale) {
             $currentLocale = setlocale(LC_ALL, 0);
-            if (!setlocale(LC_ALL, $locale)) {
-                $this->modx->log(modX::LOG_LEVEL_DEBUG, 'DaterangeTV: Locale ' . $locale . 'not valid!');
+            if (!setlocale(LC_ALL, $locale) && $debug) {
+                $this->modx->log(modX::LOG_LEVEL_DEBUG, 'Locale ' . $locale . 'not valid!', '', 'DaterangeTV');
             }
         }
 
         // calculate daterange output
-        if (intval($daterange[1]) > intval($daterange[0])) {
-            $end = trim(strftime($format[0] . $format[1] . $format[2], $daterange[1]));
+        if (intval($end) > intval($start)) {
+            $start_day = date('d', $start);
+            $start_month = date('m', $start);
+            $start_year = date('Y', $start);
 
-            $start_day = date('d', $daterange[0]);
-            $start_month = date('m', $daterange[0]);
-            $start_year = date('Y', $daterange[0]);
+            $end_day = date('d', $end);
+            $end_month = date('m', $end);
+            $end_year = date('Y', $end);
 
-            $end_day = date('d', $daterange[1]);
-            $end_month = date('m', $daterange[1]);
-            $end_year = date('Y', $daterange[1]);
-
-            if ($start_year != $end_year) {
-                $start = trim(strftime($format[0] . $format[1] . $format[2], $daterange[0])) . $separator;
+            if ($start_year != $end_year || !$stripEqualParts) {
+                $output = trim(strftime($format[0] . $format[1] . $format[2], $start)) . $separator . trim(strftime($format[0] . $format[1] . $format[2], $end));
             } elseif ($start_month != $end_month) {
-                $start = trim(strftime($format[0] . $format[1], $daterange[0])) . $separator;
+                if ($yearsFirst) {
+                    $output = trim(strftime($format[0] . $format[1] . $format[2], $start)) . $separator . trim(strftime($format[1] . $format[2], $end));
+                } else {
+                    $output = trim(strftime($format[0] . $format[1], $start)) . $separator . trim(strftime($format[0] . $format[1] . $format[2], $end));
+                }
             } elseif ($start_day != $end_day) {
-                $start = trim(strftime($format[0], $daterange[0])) . $separator;
+                if ($yearsFirst) {
+                    if ($daysBeforeMonths) {
+                        $output = trim(strftime($format[0] . $format[1], $start)) . $separator . trim(strftime($format[1] . $format[2], $end));
+                    } else {
+                        $output = trim(strftime($format[0] . $format[1] . $format[2], $start)) . $separator . trim(strftime($format[2], $end));
+                    }
+                } else {
+                    if ($daysBeforeMonths) {
+                        $output = trim(strftime($format[0], $start)) . $separator . trim(strftime($format[0] . $format[1] . $format[2], $end));
+                    } else {
+                        $output = trim(strftime($format[0] . $format[1], $start)) . $separator . trim(strftime($format[1] . $format[2], $end));
+                    }
+                }
             } else {
-                $start = '';
+                $output = trim(strftime($format[0] . $format[1] . $format[2], $start));
             }
-            $output = $start . $end;
         } else {
-            $output = trim(strftime($format[0] . $format[1] . $format[2], $daterange[0]));
+            $output = trim(strftime($format[0] . $format[1] . $format[2], $start));
         }
 
         // reset locale
         if (isset($currentLocale)) {
-            if (!setlocale(LC_ALL, $currentLocale)) {
-                $this->modx->log(modX::LOG_LEVEL_DEBUG, 'DaterangeTV: Old locale ' . $currentLocale . 'not valid!');
+            if (!setlocale(LC_ALL, $currentLocale) && $debug) {
+                $this->modx->log(modX::LOG_LEVEL_DEBUG, 'Old locale ' . $currentLocale . 'not valid!', '', 'DaterangeTV');
             }
         }
         return ($output);

@@ -33,6 +33,7 @@ value | Use your own value for the snippet output. The properties `tvname` and `
 format | A between day, month and year by &#124; separated list of [strftime](http://php.net/manual/en/function.strftime.php) placeholders[^2]. | %e.&#124; %B &#124;%Y
 separator | String between the first and second part of the daterange. | ` – `
 locale | Locale the daterange strings are formatted with. | MODX `locale` system setting
+stripEqualParts | Strip equal parts from the date range output (i.e. strip the year, if start and end of the date range have the same year). | MODX `locale` system setting
 
 So the following snippet call could be used:
 

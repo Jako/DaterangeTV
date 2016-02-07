@@ -180,6 +180,7 @@ class DaterangeTV
 
         $separator = $this->getOption('separator', $properties);
         $locale = $this->getOption('locale', $properties, false);
+        $stripEqualParts = $this->getBooleanOption('stripEqualParts', $properties, true);
 
         $format = explode('|', $format);
         if (count($format) != 3) {

@@ -3,8 +3,10 @@
 /**
  * Main Class for Daterange TV
  *
+ * Copyright 2013-2016 by Thomas Jakobi <thomas.jakobi@partout.info>
+ *
  * @package daterangetv
- * @subpackage class
+ * @subpackage classfile
  */
 class DaterangeTV
 {
@@ -38,7 +40,7 @@ class DaterangeTV
      * @param modX $modx A reference to the modX instance.
      * @param array $options An array of options. Optional.
      */
-    function __construct(modX &$modx, $options = array())
+    function __construct(modX &$modx, array $options = array())
     {
         $this->modx = &$modx;
 

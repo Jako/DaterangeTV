@@ -1,6 +1,10 @@
 Changelog
 =========
 
+- 1.2.3
+    - Allow date format ordering other than d-m-y (thanks to smg6511)
+    - Added stripEqualParts snippet property
+    - Log errors only with enabled debug snippet property
 - 1.2.2
     - Better support for manager_date_format and daterangetv.manager_format
     - DaterangeTV.Renderer handles invalid values better

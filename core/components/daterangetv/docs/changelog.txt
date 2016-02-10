@@ -1,5 +1,5 @@
-Changelog
-=========
+Changelog for DaterangeTV
+=========================
 
 - 1.2.3
     - Allow date format ordering other than d-m-y (thanks to smg6511)
@@ -13,8 +13,10 @@ Changelog
 - 1.2.0
     - Added column renderer (for MIGX/Collections etc.)
     - Added default output system settings
+
 - 1.1.0
     - Added snippet/output filter
+
 - 1.0.1
     - Removed debug code
 - 1.0.0

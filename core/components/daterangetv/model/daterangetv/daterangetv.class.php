@@ -126,8 +126,6 @@ class DaterangeTV
     {
         if (in_array(strtolower($value), array('false', 'no'))) {
             return false;
-        } elseif (in_array(strtolower($value), array('true', 'yes'))) {
-            return true;
         }
         return (bool)$value;
     }

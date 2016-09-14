@@ -1,5 +1,5 @@
 site_name: Datete Range Custom Template Variable
-docs_dir: core/components/daterangetv/docs
+docs_dir: core/components/daterangetv/docs/mkdocs
 site_dir: _build/site
 
 repo_url: https://github.com/Jako/DaterangeTV

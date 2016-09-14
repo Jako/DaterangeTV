@@ -4,11 +4,12 @@
  *
  * @package daterangetv
  * @subpackage snippet/output filter
+ *
+ * @var modX $modx
+ * @var array $scriptProperties
+ * @var string $options
+ * @var string $input
  */
-
-/** @var \modX $modx */
-/** @var array $scriptProperties */
-/** @var string $options */
 
 // Load daterangetv class
 $corePath = $modx->getOption('daterangetv.core_path', null, $modx->getOption('core_path') . 'components/daterangetv/');
@@ -21,9 +22,9 @@ $value = $modx->getOption('value', $scriptProperties, '', true);
 $tvname = $modx->getOption('tvname', $scriptProperties, '', true);
 $docid = $modx->getOption('docid', $scriptProperties, (($modx->resource) ? $modx->resource->get('id') : 0), true);
 
+// Used as output filter
 if (!empty($tag)) {
-    // Used as output filter
-    $scriptProperties = $modx->fromJson($options);
+    $scriptProperties = json_decode($options, true);
     $value = $input;
 }
 
@@ -32,6 +33,16 @@ if (!$value) {
     if ($tv) {
         // Get the raw content of the TV
         $value = $tv->getValue($docid);
+        $inputProperties = $tv->get('input_properties');
+        // end value is stored in a different template variable
+        if (isset ($inputProperties['endTV'])) {
+            $resource = $modx->getObject('modTemplateVarResource', array(
+                'tmplvarid' => $inputProperties['endTV'],
+                'contentid' => $docid,
+            ), true);
+            $endValue = ($resource && $resource instanceof modTemplateVarResource) ? $resource->get('value') : '';
+            $value = ($endValue != '') ? $value . '||' . $endValue : $value;
+        }
     } else {
         $modx->log(xPDO::LOG_LEVEL_ERROR, "Template Variable '{$tvname}' not found.", '', 'DaterangeTV');
     }

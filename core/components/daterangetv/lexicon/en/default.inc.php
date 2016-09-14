@@ -1,6 +1,6 @@
 <?php
 /**
- * Default English Lexicon Entries for daterange
+ * Default Lexicon Entries for DaterangeTV
  *
  * @package daterangetv
  * @subpackage lexicon

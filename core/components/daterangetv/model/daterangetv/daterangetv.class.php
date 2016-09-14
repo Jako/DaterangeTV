@@ -26,7 +26,7 @@ class DaterangeTV
      * The version
      * @var string $version
      */
-    public $version = '1.2.3';
+    public $version = '1.3.0';
 
     /**
      * The class options
@@ -131,12 +131,24 @@ class DaterangeTV
     }
 
     /**
-     * Render supporting javascript to try and help it work with MIGX etc
+     * Register javascripts in the controller
      */
     public function includeScriptAssets()
     {
-        $this->modx->regClientStartupScript($this->options['assetsUrl'] . 'mgr/js/daterangetv.js?v=v' . $this->version);
-        $this->modx->regClientStartupScript($this->options['assetsUrl'] . 'mgr/js/daterangetv.renderer.js?v=v' . $this->version);
+        $assetsUrl = $this->getOption('assetsUrl');
+        $jsUrl = $this->getOption('jsUrl') . 'mgr/';
+        $jsSourceUrl = $assetsUrl . '../../../source/js/mgr/';
+
+        if ($this->getOption('debug') && $this->getOption('assetsUrl') != MODX_ASSETS_URL . 'components/daterangetv/' || true) {
+            $this->modx->controller->addJavascript($jsSourceUrl . 'daterangetv.js?v=v' . $this->version);
+            $this->modx->controller->addJavascript($jsSourceUrl . 'daterangetv.templatevar.js?v=v' . $this->version);
+            $this->modx->controller->addJavascript($jsSourceUrl . 'daterangetv.renderer.js?v=v' . $this->version);
+        } else {
+            $this->modx->controller->addJavascript($jsUrl . 'daterangetv.min.js?v=v' . $this->version);
+        }
+        $this->modx->controller->addHtml('<script type="text/javascript">'
+            . 'DaterangeTV.config = ' . json_encode($this->options) . ';'
+            . '</script>');
     }
 
     /**
@@ -179,6 +191,7 @@ class DaterangeTV
         $yearsFirst = ($dayPos === false || $monthPos === false || $yearPos === false || $yearPos > $monthPos || $yearPos > $dayPos) ? false : true;
 
         $separator = $this->getOption('separator', $properties);
+        $separator = ($separator == '') ? $this->getOption('separator') : $separator;
         $locale = $this->getOption('locale', $properties, false);
         $stripEqualParts = $this->getBooleanOption('stripEqualParts', $properties, true);
 

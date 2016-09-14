@@ -1,7 +1,6 @@
 <div id="tv-input-properties-form{$tv}"></div>
 <script type="text/javascript">
-    // <![CDATA[
-    {literal}
+    // <![CDATA[{literal}
     var params = {
         {/literal}{foreach from=$params key=k item=v name='p'}
         '{$k}': '{$v|escape:"javascript"}'{if NOT $smarty.foreach.p.last}, {/if}
@@ -29,8 +28,7 @@
             hiddenName: 'inopt_allowBlank',
             id: 'inopt_allowBlank{/literal}{$tv}{literal}',
             value: !(params['allowBlank'] == 0 || params['allowBlank'] == 'false'),
-            anchors: '98%',
-            width: '99%',
+            anchor: '100%',
             listeners: oc
         }, {
             xtype: MODx.expandHelp ? 'label' : 'hidden',
@@ -39,18 +37,32 @@
             cls: 'desc-under'
         }, {
             xtype: 'textfield',
-            fieldLabel: '{/literal}{$daterangetv.dateFormat}{literal}',
-            description: MODx.expandHelp ? '' : '{/literal}{$daterangetv.dateFormatDesc}{literal}',
+            fieldLabel: _('daterangetv.dateFormat'),
+            description: MODx.expandHelp ? '' : _('daterangetv.dateFormatDesc'),
             name: 'inopt_dateFormat',
             id: 'inopt_dateFormat{/literal}{$tv}{literal}',
             value: params['dateFormat'] || '',
-            anchors: '98%',
-            width: '99%',
+            anchor: '100%',
             listeners: oc
         }, {
             xtype: MODx.expandHelp ? 'label' : 'hidden',
             forId: 'inopt_dateFormat{/literal}{$tv}{literal}',
-            html: '{/literal}{$daterangetv.dateFormatDesc}{literal}',
+            html: _('daterangetv.dateFormatDesc'),
+            cls: 'desc-under'
+        }, {
+            xtype: 'daterangetv-combo-tv',
+            fieldLabel: _('daterangetv.endTV'),
+            description: MODx.expandHelp ? '' : _('daterangetv.endTVDesc'),
+            name: 'inopt_endTV',
+            hiddenName: 'inopt_endTV',
+            id: 'inopt_endTV{/literal}{$tv}{literal}',
+            value: params['endTV'] || '',
+            anchor: '100%',
+            listeners: oc
+        }, {
+            xtype: MODx.expandHelp ? 'label' : 'hidden',
+            forId: 'inopt_endTV{/literal}{$tv}{literal}',
+            html: _('daterangetv.endTVDesc'),
             cls: 'desc-under'
         }],
         renderTo: 'tv-input-properties-form{/literal}{$tv}{literal}'

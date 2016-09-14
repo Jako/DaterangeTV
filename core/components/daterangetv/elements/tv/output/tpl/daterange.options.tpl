@@ -23,48 +23,45 @@
         labelAlign: 'top',
         items: [{
             xtype: 'textfield',
-            fieldLabel: '{/literal}{$daterangetv.dateOutputFormat}{literal}',
-            description: MODx.expandHelp ? '' : '{/literal}{$daterangetv.dateOutputFormatDesc}{literal}',
+            fieldLabel: _('daterangetv.dateOutputFormat'),
+            description: MODx.expandHelp ? '' : _('daterangetv.dateOutputFormatDesc'),
             name: 'prop_format',
             id: 'prop_format{/literal}{$tv}{literal}',
-            value: params['format'] || '%e| %B |%Y',
-            anchors: '98%',
-            width: '99%',
+            value: params['format'] || '%e.| %B |%Y',
+            anchor: '100%',
             listeners: oc
         }, {
             xtype: MODx.expandHelp ? 'label' : 'hidden',
             forId: 'prop_format{/literal}{$tv}{literal}',
-            html: '{/literal}{$daterangetv.dateOutputFormatDesc}{literal}',
+            html: _('daterangetv.dateOutputFormatDesc'),
             cls: 'desc-under'
         }, {
             xtype: 'textfield',
-            fieldLabel: '{/literal}{$daterangetv.separatorOutput}{literal}',
-            description: MODx.expandHelp ? '' : '{/literal}{$daterangetv.separatorOutputDesc}{literal}',
+            fieldLabel: _('daterangetv.separatorOutput'),
+            description: MODx.expandHelp ? '' : _('daterangetv.separatorOutputDesc'),
             name: 'prop_separator',
             id: 'prop_separator{/literal}{$tv}{literal}',
-            value: params['separator'] || ' – ',
-            anchors: '98%',
-            width: '99%',
+            value: params['separator'] || '&thinsp;–&thinsp;',
+            anchor: '100%',
             listeners: oc
         }, {
             xtype: MODx.expandHelp ? 'label' : 'hidden',
             forId: 'prop_separator{/literal}{$tv}{literal}',
-            html: '{/literal}{$daterangetv.separatorOutputDesc}{literal}',
+            html: _('daterangetv.separatorOutputDesc'),
             cls: 'desc-under'
         }, {
             xtype: 'textfield',
-            fieldLabel: '{/literal}{$daterangetv.localeOutput}{literal}',
-            description: MODx.expandHelp ? '' : '{/literal}{$daterangetv.localeOutputDesc}{literal}',
+            fieldLabel: _('daterangetv.localeOutput'),
+            description: MODx.expandHelp ? '' : _('daterangetv.localeOutputDesc'),
             name: 'prop_locale',
             id: 'prop_locale{/literal}{$tv}{literal}',
             value: params['locale'] || '',
-            anchors: '98%',
-            width: '99%',
+            anchor: '100%',
             listeners: oc
         }, {
             xtype: MODx.expandHelp ? 'label' : 'hidden',
             forId: 'prop_locale{/literal}{$tv}{literal}',
-            html: '{/literal}{$daterangetv.localeOutputDesc}{literal}',
+            html: _('daterangetv.localeOutputDesc'),
             cls: 'desc-under'
         }],
         renderTo: 'tv-output-properties-form{/literal}{$tv}{literal}'

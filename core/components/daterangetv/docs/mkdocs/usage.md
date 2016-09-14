@@ -2,11 +2,11 @@
 
 The following input options could be set in template variable settings:
 
-Setting  | Description                                                                                                                             | Default
------------ | --------------------------------------------------------------------------------------------------------------------------------------- | -------------------
+Setting | Description | Default
+------- | ----------- | -------
 Allow Blank | If set to No, MODX will not allow the user to save the Resource until a valid, non-blank value has been entered in the From Date input. | Yes
-Date Format | The format must be valid according to [Date.parseDate](http://dev.sencha.com/playpen/docs/output/Date.html).                                                                                   | Manager date format
-
+Date Format | The format must be valid according to [Date.parseDate](http://dev.sencha.com/playpen/docs/output/Date.html). | Manager date format
+End Value Template Variable | Template Variable that contains the end value of the daterange. If used, the DaterangeTV contains only the start value. The end value template variable should be created as a hidden template variable type. | -
 
 ## Output Options
 
@@ -14,8 +14,8 @@ The following output options could be set in template variable settings if the
 output type is set to `Date Range (From <> To)`. Another possibility is to
 assign the settings as properties to the MODX tag[^1].
 
-Setting   | Description | Default
---------- | ----------- | --------------
+Setting | Description | Default
+------- | ----------- | -------
 Date Format | A between day, month and year by &#124; separated list of [strftime](http://php.net/manual/en/function.strftime.php) placeholders[^2]. | %e&#124; %B &#124;%Y
 Separator | String between the first and second part of the daterange. | ` – `
 Locale | Locale the daterange strings are formatted with. | MODX `locale` system setting
@@ -25,17 +25,17 @@ Locale | Locale the daterange strings are formatted with. | MODX `locale` system
 If the output options for the custom tv could not be set (i.e. inside of MIGX) or if you want to use
 snippet or an output filter could be used. The snippet has the following properties:
 
-Property  | Description | Default
---------- | ----------- | --------------
+Property | Description | Default
+-------- | ----------- | -------
 tvname | Name of the Daterange TV. | -
 docid | Resource where the Daterange TV value is received from. | Current resource
 value | Use your own value for the snippet output. The properties `tvname` and `docid` are ignored. | -
 format | A between day, month and year by &#124; separated list of [strftime](http://php.net/manual/en/function.strftime.php) placeholders[^2]. | %e.&#124; %B &#124;%Y
-separator | String between the first and second part of the daterange. | ` – `
+separator | String between the first and second part of the daterange. | &thinsp;–&thinsp;
 locale | Locale the daterange strings are formatted with. | MODX `locale` system setting
-stripEqualParts | Strip equal parts from the date range output (i.e. strip the year, if start and end of the date range have the same year). | MODX `locale` system setting
+stripEqualParts | Strip equal parts from the date range output (i.e. strip the year, if start and end of the date range have the same year). | Yes
 
-So the following snippet call could be used:
+So the following snippet call could be used: 
 
 ```
 [[daterange? 

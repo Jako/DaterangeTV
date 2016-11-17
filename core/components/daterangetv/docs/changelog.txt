@@ -1,6 +1,9 @@
 Changelog for DaterangeTV
 =========================
 
+- 1.3.1
+    - Improved backwards compatibility when switching a datereange TV to use a
+      second TV for an end value
 - 1.3.0
     - Optional second template variable for the end part of the datereange. Could be
       set to i.e. a hidden template variable

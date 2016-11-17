@@ -49,8 +49,15 @@ class DaterangeInputRender extends modTemplateVarInputRender
                 'contentid' => $this->modx->resource->get('id'),
             ), true);
             $endValue = ($resource && $resource instanceof modTemplateVarResource) ? $resource->get('value') : '';
-            $daterange[0] = ($value != '') ? date($dateFormat, strtotime($value)) : '';
-            $daterange[1] = ($endValue != '') ? date($dateFormat, strtotime($endValue)) : '';
+            if (!$endValue && (strpos($value, '||'))) {
+                // maintain backwards compatibility
+                $daterange = explode('||', $value);
+                $daterange[0] = ($daterange[0] != '') ? date($dateFormat, strtotime($daterange[0])) : '';
+                $daterange[1] = ($daterange[1] != '') ? date($dateFormat, strtotime($daterange[1])) : '';
+            } else {
+                $daterange[0] = ($value != '') ? date($dateFormat, strtotime($value)) : '';
+                $daterange[1] = ($endValue != '') ? date($dateFormat, strtotime($endValue)) : '';
+            }
         } else {
             // end value is stored in the same template variable
             if (strpos($value, '||')) {

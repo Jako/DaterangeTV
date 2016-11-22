@@ -139,7 +139,7 @@ class DaterangeTV
         $jsUrl = $this->getOption('jsUrl') . 'mgr/';
         $jsSourceUrl = $assetsUrl . '../../../source/js/mgr/';
 
-        if ($this->getOption('debug') && $this->getOption('assetsUrl') != MODX_ASSETS_URL . 'components/daterangetv/' || true) {
+        if ($this->getOption('debug') && $this->getOption('assetsUrl') != MODX_ASSETS_URL . 'components/daterangetv/') {
             $this->modx->controller->addJavascript($jsSourceUrl . 'daterangetv.js?v=v' . $this->version);
             $this->modx->controller->addJavascript($jsSourceUrl . 'daterangetv.templatevar.js?v=v' . $this->version);
             $this->modx->controller->addJavascript($jsSourceUrl . 'daterangetv.renderer.js?v=v' . $this->version);

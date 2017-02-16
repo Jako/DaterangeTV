@@ -13,12 +13,13 @@ class DaterangeOutputRender extends modTemplateVarOutputRender
      *
      * @param string $value
      * @param array $params
-     * @return void|mixed
+     * @return string
      */
     public function process($value, array $params = array())
     {
         // Load daterangetv class
         $corePath = $this->modx->getOption('daterangetv.core_path', null, $this->modx->getOption('core_path') . 'components/daterangetv/');
+        /** @var DaterangeTV $daterangetv */
         $daterangetv = $this->modx->getService('daterangetv', 'DaterangeTV', $corePath . 'model/daterangetv/', array(
             'core_path' => $corePath
         ));

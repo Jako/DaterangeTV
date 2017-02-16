@@ -3,7 +3,7 @@
   "lowCaseName": "daterangetv",
   "description": "Date range custom template variable",
   "author": "Thomas Jakobi",
-  "version": "1.3.1-pl3",
+  "version": "1.3.2",
   "package": {
     "elements": {
       "plugins": [

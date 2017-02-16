@@ -27,7 +27,7 @@
             name: 'inopt_allowBlank',
             hiddenName: 'inopt_allowBlank',
             id: 'inopt_allowBlank{/literal}{$tv}{literal}',
-            value: !(params['allowBlank'] == 0 || params['allowBlank'] == 'false'),
+            value: !(params['allowBlank'] === 0 || params['allowBlank'] === 'false'),
             anchor: '100%',
             listeners: oc
         }, {

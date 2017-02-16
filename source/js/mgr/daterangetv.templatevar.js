@@ -26,13 +26,13 @@ Ext.apply(Ext.form.VTypes, {
         var start = Ext.getCmp(field.startDateField);
         var end = Ext.getCmp(field.endDateField);
         if (start) {
-            if (!start.maxValue || (date.getTime() != start.maxValue.getTime())) {
+            if (!start.maxValue || (date.getTime() !== start.maxValue.getTime())) {
                 start.setMaxValue(date);
                 start.validate();
             }
         }
         if (end) {
-            if (!end.minValue || (date.getTime() != end.minValue.getTime())) {
+            if (!end.minValue || (date.getTime() !== end.minValue.getTime())) {
                 end.setMinValue(date);
                 end.validate();
             }
@@ -139,7 +139,7 @@ Ext.extend(DaterangeTV.combo.DaterangeTV, MODx.Panel, {
         } else {
             Ext.get('tv' + this.config.tvId).set({'value': fromToDate});
         }
-        if (oldFromToDate != fromToDate) {
+        if (oldFromToDate !== fromToDate) {
             MODx.fireResourceFormChange();
         }
     },

@@ -3,7 +3,7 @@
 /**
  * Main Class for Daterange TV
  *
- * Copyright 2013-2016 by Thomas Jakobi <thomas.jakobi@partout.info>
+ * Copyright 2013-2017 by Thomas Jakobi <thomas.jakobi@partout.info>
  *
  * @package daterangetv
  * @subpackage classfile
@@ -26,7 +26,7 @@ class DaterangeTV
      * The version
      * @var string $version
      */
-    public $version = '1.3.1';
+    public $version = '1.3.2';
 
     /**
      * The class options
@@ -146,9 +146,7 @@ class DaterangeTV
         } else {
             $this->modx->controller->addJavascript($jsUrl . 'daterangetv.min.js?v=v' . $this->version);
         }
-        $this->modx->controller->addHtml('<script type="text/javascript">'
-            . 'DaterangeTV.config = ' . json_encode($this->options) . ';'
-            . '</script>');
+        $this->modx->controller->addHtml('<script type="text/javascript">DaterangeTV.config = ' . json_encode($this->options) . ';</script>');
     }
 
     /**

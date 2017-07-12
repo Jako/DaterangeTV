@@ -1,6 +1,8 @@
 Changelog for DaterangeTV
 =========================
 
+- 1.3.3
+    - Fixing mandatory first date even if allowBlank is set to true [#10]
 - 1.3.2
     - Bugfix for an issue when allowBlank is set to false [#9]
     - Bugfix for years first check in DaterangeTV.Renderer

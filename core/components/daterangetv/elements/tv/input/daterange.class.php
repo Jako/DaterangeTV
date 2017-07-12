@@ -74,7 +74,7 @@ class DaterangeInputRender extends modTemplateVarInputRender
         $this->modx->controller->addLexiconTopic('daterangetv:tvrenders');
 
         // set params
-        $params['allowBlank'] = ($params['allowBlank'] == 'false' || $params['allowBlank'] == 0) ? 'false' : 'true';
+        $params['allowBlank'] = ($params['allowBlank'] === 'false' || $params['allowBlank'] === 0 || $params['allowBlank'] === false) ? false : true;
         $this->setPlaceholder('params', $params);
     }
 }

@@ -71,6 +71,11 @@
 
             <!-- Search, Navigation and Repo links -->
             <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
                 <li >
                     <a rel="next" href="../installation/">
                         <i class="fa fa-arrow-left"></i> Previous
@@ -136,6 +141,11 @@
 <td>Date Format</td>
 <td>The format must be valid according to <a href="http://dev.sencha.com/playpen/docs/output/Date.html">Date.parseDate</a>.</td>
 <td>Manager date format</td>
+</tr>
+<tr>
+<td>End Value Template Variable</td>
+<td>Template Variable that contains the end value of the daterange. If used, the DaterangeTV contains only the start value. The end value template variable should be created as a hidden template variable type.</td>
+<td>-</td>
 </tr>
 </tbody>
 </table>
@@ -204,7 +214,7 @@ snippet or an output filter could be used. The snippet has the following propert
 <tr>
 <td>separator</td>
 <td>String between the first and second part of the daterange.</td>
-<td><code>–</code></td>
+<td>&thinsp;–&thinsp;</td>
 </tr>
 <tr>
 <td>locale</td>
@@ -214,11 +224,11 @@ snippet or an output filter could be used. The snippet has the following propert
 <tr>
 <td>stripEqualParts</td>
 <td>Strip equal parts from the date range output (i.e. strip the year, if start and end of the date range have the same year).</td>
-<td>MODX <code>locale</code> system setting</td>
+<td>Yes</td>
 </tr>
 </tbody>
 </table>
-<p>So the following snippet call could be used:</p>
+<p>So the following snippet call could be used: </p>
 <pre><code>[[daterange? 
 &amp;value=`2013-01-01||2013-01-02` 
 &amp;format=` %d.| %b. |%Y` 
@@ -276,6 +286,33 @@ insert <code>DaterangeTV.Renderer</code> in the renderer option of the grid colu
         <script src="../js/jquery-1.10.2.min.js"></script>
         <script src="../js/bootstrap-3.0.3.min.js"></script>
         <script src="../js/highlight.pack.js"></script>
+        <script>var base_url = '..';</script>
+        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
         <script src="../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

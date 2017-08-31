@@ -1,4 +1,4 @@
-site_name: Datete Range Custom Template Variable
+site_name: DaterangeTV
 docs_dir: core/components/daterangetv/docs/mkdocs
 site_dir: _build/site
 

@@ -1,4 +1,4 @@
-# Image+
+# DaterangeTV
 
 DaterangeTV is a custom template variable for MODX Revolution. The template variable displays two depending datepicker inputs.
 

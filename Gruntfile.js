@@ -32,9 +32,9 @@ module.exports = function (grunt) {
             }
         },
         watch: {
-            scripts: {
+            js: {
                 files: [
-                    'source/js/mgr/**/*.js'
+                    'source/**/*.js'
                 ],
                 tasks: ['uglify', 'usebanner:js']
             }
@@ -47,7 +47,7 @@ module.exports = function (grunt) {
                 }],
                 options: {
                     replacements: [{
-                        pattern: /Copyright 2013(-\d{4})? by/g,
+                        pattern: /Copyright \d{4}(-\d{4})? by/g,
                         replacement: 'Copyright ' + (new Date().getFullYear() > 2013 ? '2013-' : '') + new Date().getFullYear() + ' by'
                     }]
                 }
@@ -63,17 +63,30 @@ module.exports = function (grunt) {
                         replacement: 'version = \'' + '<%= modx.version %>' + '\''
                     }]
                 }
+            },
+            docs: {
+                files: [{
+                    src: 'mkdocs.yml',
+                    dest: 'mkdocs.yml'
+                }],
+                options: {
+                    replacements: [{
+                        pattern: /&copy; \d{4}(-\d{4})?/g,
+                        replacement: '&copy; ' + (new Date().getFullYear() > 2013 ? '2013-' : '') + new Date().getFullYear()
+                    }]
+                }
             }
         }
     });
 
     //load the packages
+    grunt.loadNpmTasks('grunt-banner');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-banner');
+    grunt.loadNpmTasks('grunt-ssh');
     grunt.loadNpmTasks('grunt-string-replace');
     grunt.renameTask('string-replace', 'bump');
 
     //register the task
-    grunt.registerTask('default', ['bump', 'uglify', 'usebanner']);
+    grunt.registerTask('default', ['bump', 'uglify', 'usebanner', 'sftp']);
 };

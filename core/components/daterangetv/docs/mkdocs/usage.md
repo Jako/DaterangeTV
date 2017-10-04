@@ -22,8 +22,9 @@ Locale | Locale the daterange strings are formatted with. | MODX `locale` system
 
 ## Snippet/Output filter
 
-If the output options for the custom tv could not be set (i.e. inside of MIGX) or if you want to use
-snippet or an output filter could be used. The snippet has the following properties:
+If the output options for the custom tv could not be set (i.e. inside of MIGX)
+or if you want to use snippet or an output filter could be used. The snippet has
+the following properties:
 
 Property | Description | Default
 -------- | ----------- | -------
@@ -55,24 +56,9 @@ encoded array:
 
 ## Column Renderer
 
-The package contains a column renderer for i.e. MIGX or Collections. In Collections you have to 
-insert `DaterangeTV.Renderer` in the renderer option of the grid column.
+The package contains a column renderer for i.e. MIGX or Collections. In
+Collections you have to insert `DaterangeTV.Renderer` in the renderer option of
+the grid column.
 
 [^1]: The daterange template tariable could be formatted in template or template chunks with the following tag syntax: ```[[*tvname?format=`%e| %B |%Y`&locale=`de_DE.utf8`]]```
 [^2]: If the output type is set to `Date Range (From <> To)` the output will be formatted removing equal days and months (and years - by showing only the start date).
-
-<!-- Piwik -->
-<script type="text/javascript">
-  var _paq = _paq || [];
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//piwik.partout.info/";
-    _paq.push(['setTrackerUrl', u+'piwik.php']);
-    _paq.push(['setSiteId', 17]);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<noscript><p><img src="//piwik.partout.info/piwik.php?idsite=17" style="border:0;" alt="" /></p></noscript>
-<!-- End Piwik Code -->

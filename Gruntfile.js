@@ -37,6 +37,12 @@ module.exports = function (grunt) {
                     'source/**/*.js'
                 ],
                 tasks: ['uglify', 'usebanner:js']
+            },
+            config: {
+                files: [
+                    '_build/config.json'
+                ],
+                tasks: ['default']
             }
         },
         bump: {

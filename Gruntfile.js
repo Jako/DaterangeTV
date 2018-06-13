@@ -2,7 +2,6 @@ module.exports = function (grunt) {
     // Project configuration.
     grunt.initConfig({
         modx: grunt.file.readJSON('_build/config.json'),
-        sshconfig: grunt.file.readJSON('/Users/jako/Documents/MODx/partout.json'),
         banner: '/*!\n' +
         ' * <%= modx.name %> - <%= modx.description %>\n' +
         ' * Version: <%= modx.version %>\n' +
@@ -89,10 +88,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-banner');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-ssh');
     grunt.loadNpmTasks('grunt-string-replace');
     grunt.renameTask('string-replace', 'bump');
 
     //register the task
-    grunt.registerTask('default', ['bump', 'uglify', 'usebanner', 'sftp']);
+    grunt.registerTask('default', ['bump', 'uglify', 'usebanner']);
 };

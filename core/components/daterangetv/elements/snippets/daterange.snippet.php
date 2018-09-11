@@ -44,7 +44,7 @@ if (!$value) {
             $value = ($endValue != '') ? $value . '||' . $endValue : $value;
         }
     } else {
-        $modx->log(xPDO::LOG_LEVEL_ERROR, "Template Variable '{$tvname}' not found.", '', 'DaterangeTV');
+        $modx->log(xPDO::LOG_LEVEL_DEBUG, 'Template Variable ' . $tvname . ' not found.', '', 'DaterangeTV');
     }
 }
 

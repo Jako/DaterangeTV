@@ -1,28 +1,27 @@
-DaterangeTV
-===========
+# DaterangeTV
 
 Date range custom template variable in MODX Revolution.
 
-Author: Thomas Jakobi <thomas.jakobi@partout.info>
-License: GNU GPLv2
+- Author: Thomas Jakobi <thomas.jakobi@partout.info>
+- License: GNU GPLv2
 
-Features
---------
+## Features
+
 With this MODX Revolution custom template variable two depending datepicker
 inputs could be used to insert a date range in a MODX resource.
 
-Installation
-------------
+## Installation
+
 MODX Package Management
 
-Usage
------
+## Usage
+
 Install via package manager, create a TV and change the input & output type to 'Date Range (From <> To)'
 
-Documentation
--------------
+## Documentation
+
 For more information please read the documentation on http://jako.github.io/DaterangeTV/
 
-GitHub Repository
------------------
+## GitHub Repository
+
 https://github.com/Jako/DaterangeTV

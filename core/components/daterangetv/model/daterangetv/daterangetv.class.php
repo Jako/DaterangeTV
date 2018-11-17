@@ -3,7 +3,7 @@
 /**
  * Main Class for Daterange TV
  *
- * Copyright 2013-2017 by Thomas Jakobi <thomas.jakobi@partout.info>
+ * Copyright 2013-2018 by Thomas Jakobi <thomas.jakobi@partout.info>
  *
  * @package daterangetv
  * @subpackage classfile
@@ -26,7 +26,7 @@ class DaterangeTV
      * The version
      * @var string $version
      */
-    public $version = '1.3.3';
+    public $version = '1.3.4';
 
     /**
      * The class options

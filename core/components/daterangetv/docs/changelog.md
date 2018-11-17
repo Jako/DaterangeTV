@@ -7,9 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 - Change log level of not existing template variable message to debug
 
+## [1.3.4] - 2018-11-17
+### Changed
+- Bugfix for allowBlank option [#10]
+
 ## [1.3.3] - 2017-07-12
 ### Changed
-- Bugfix for  mandatory first date even if allowBlank is set to true [#10]
+- Bugfix for mandatory first date even if allowBlank is set to true [#10]
 
 ## [1.3.2] - 2017-02-16
 ### Changed

@@ -2,7 +2,7 @@
 /**
  * Resolves install statistics
  *
- * @package customrequest
+ * @package daterangetv
  * @subpackage build
  *
  * @var mixed $object

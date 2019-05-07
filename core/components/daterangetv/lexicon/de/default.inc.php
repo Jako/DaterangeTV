@@ -5,7 +5,7 @@
  * @package daterangetv
  * @subpackage lexicon
  */
-$_lang['daterange'] = 'Zeitraum';
+$_lang['daterange'] = 'Datumsbereich';
 
 $_lang['setting_daterangetv.format'] = 'Datumsformat';
 $_lang['setting_daterangetv.format_desc'] = 'Eine zwischen Tag, Monat und Jahr durch &#124; getrennte Liste von <a href="http://php.net/manual/en/function.strftime.php" target="_blank">strftime</a> Platzhaltern.';

@@ -21,7 +21,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bugfix for years first check in DaterangeTV.Renderer
 
 ## [1.3.1] - 2016-11-22
-### Added
 ### Changed
 - Improved backwards compatibility when switching a datereange TV to use a second TV for an end value [#6]
 

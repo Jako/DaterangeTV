@@ -3,11 +3,24 @@ module.exports = function (grunt) {
     grunt.initConfig({
         modx: grunt.file.readJSON('_build/config.json'),
         banner: '/*!\n' +
-        ' * <%= modx.name %> - <%= modx.description %>\n' +
-        ' * Version: <%= modx.version %>\n' +
-        ' * Build date: <%= grunt.template.today("yyyy-mm-dd") %>\n' +
-        ' */\n',
+            ' * <%= modx.name %> - <%= modx.description %>\n' +
+            ' * Version: <%= modx.version %>\n' +
+            ' * Build date: <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+            ' */\n',
         usebanner: {
+            css: {
+                options: {
+                    position: 'bottom',
+                    banner: '<%= banner %>'
+                },
+                files: {
+                    src: [
+                        'assets/components/daterangetv/css/mgr/daterangetv.min.css',
+                        'assets/components/daterangetv/css/web/daterangetv.min.css',
+                        'assets/components/daterangetv/css/pdf.css'
+                    ]
+                }
+            },
             js: {
                 options: {
                     position: 'top',
@@ -28,6 +41,57 @@ module.exports = function (grunt) {
                     'source/js/mgr/daterangetv.renderer.js'
                 ],
                 dest: 'assets/components/daterangetv/js/mgr/daterangetv.min.js'
+            }
+        },
+        sass: {
+            options: {
+                implementation: require('node-sass'),
+                outputStyle: 'expanded',
+                sourcemap: false
+            },
+            mgr: {
+                files: {
+                    'source/css/mgr/daterangetv.css': 'source/sass/mgr/daterangetv.scss'
+                }
+            }
+        },
+        postcss: {
+            options: {
+                processors: [
+                    require('pixrem')(),
+                    require('autoprefixer')({
+                        browsers: 'last 2 versions, ie >= 8'
+                    })
+                ]
+            },
+            mgr: {
+                src: [
+                    'source/css/mgr/daterangetv.css'
+                ]
+            }
+        },
+        cssmin: {
+            mgr: {
+                src: [
+                    'source/css/mgr/daterangetv.css'
+                ],
+                dest: 'assets/components/daterangetv/css/mgr/daterangetv.min.css'
+            }
+        },
+        imagemin: {
+            png: {
+                options: {
+                    optimizationLevel: 7
+                },
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'source/img/',
+                        src: ['**/*.png'],
+                        dest: 'assets/components/daterangetv/img/',
+                        ext: '.png'
+                    }
+                ]
             }
         },
         watch: {
@@ -69,6 +133,30 @@ module.exports = function (grunt) {
                     }]
                 }
             },
+            inputoptions: {
+                files: [{
+                    src: 'core/components/daterangetv/elements/tv/input/tpl/daterange.options.tpl',
+                    dest: 'core/components/daterangetv/elements/tv/input/tpl/daterange.options.tpl'
+                }],
+                options: {
+                    replacements: [{
+                        pattern: /&copy; \d{4}(-\d{4})?/g,
+                        replacement: '&copy; ' + (new Date().getFullYear() > 2013 ? '2013-' : '') + new Date().getFullYear()
+                    }]
+                }
+            },
+            outputoptions: {
+                files: [{
+                    src: 'core/components/daterangetv/elements/tv/output/tpl/daterange.options.tpl',
+                    dest: 'core/components/daterangetv/elements/tv/output/tpl/daterange.options.tpl'
+                }],
+                options: {
+                    replacements: [{
+                        pattern: /&copy; \d{4}(-\d{4})?/g,
+                        replacement: '&copy; ' + (new Date().getFullYear() > 2013 ? '2013-' : '') + new Date().getFullYear()
+                    }]
+                }
+            },
             docs: {
                 files: [{
                     src: 'mkdocs.yml',
@@ -86,11 +174,15 @@ module.exports = function (grunt) {
 
     //load the packages
     grunt.loadNpmTasks('grunt-banner');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-postcss');
+    grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-string-replace');
     grunt.renameTask('string-replace', 'bump');
 
     //register the task
-    grunt.registerTask('default', ['bump', 'uglify', 'usebanner']);
+    grunt.registerTask('default', ['bump', 'uglify', 'sass', 'postcss', 'cssmin', 'usebanner']);
 };

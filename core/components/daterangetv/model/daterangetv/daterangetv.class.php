@@ -1,13 +1,13 @@
 <?php
-
 /**
  * Main Class for Daterange TV
  *
- * Copyright 2013-2018 by Thomas Jakobi <thomas.jakobi@partout.info>
+ * Copyright 2013-2019 by Thomas Jakobi <thomas.jakobi@partout.info>
  *
  * @package daterangetv
  * @subpackage classfile
  */
+
 class DaterangeTV
 {
     /**
@@ -138,15 +138,19 @@ class DaterangeTV
         $assetsUrl = $this->getOption('assetsUrl');
         $jsUrl = $this->getOption('jsUrl') . 'mgr/';
         $jsSourceUrl = $assetsUrl . '../../../source/js/mgr/';
+        $cssUrl = $this->getOption('cssUrl') . 'mgr/';
+        $cssSourceUrl = $assetsUrl . '../../../source/css/mgr/';
 
         if ($this->getOption('debug') && $this->getOption('assetsUrl') != MODX_ASSETS_URL . 'components/daterangetv/') {
+            $this->modx->controller->addCss($cssSourceUrl . 'daterangetv.css?v=v' . $this->version);
             $this->modx->controller->addJavascript($jsSourceUrl . 'daterangetv.js?v=v' . $this->version);
             $this->modx->controller->addJavascript($jsSourceUrl . 'daterangetv.templatevar.js?v=v' . $this->version);
             $this->modx->controller->addJavascript($jsSourceUrl . 'daterangetv.renderer.js?v=v' . $this->version);
         } else {
+            $this->modx->controller->addCss($cssUrl . 'daterangetv.min.css?v=v' . $this->version);
             $this->modx->controller->addJavascript($jsUrl . 'daterangetv.min.js?v=v' . $this->version);
         }
-        $this->modx->controller->addHtml('<script type="text/javascript">DaterangeTV.config = ' . json_encode($this->options) . ';</script>');
+        $this->modx->controller->addHtml('<script type="text/javascript">DaterangeTV.config = ' . json_encode($this->options, JSON_PRETTY_PRINT) . ';</script>');
     }
 
     /**

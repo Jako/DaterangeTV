@@ -5,7 +5,9 @@
  * @package daterangetv
  * @subpackage language
  */
-$_lang['daterange'] = 'Zeitraum (von – bis)';
+$_lang['daterangetv'] = 'DaterangeTV';
+
+$_lang['daterange'] = 'Datumsbereich (von – bis)';
 $_lang['daterangetv.from'] = 'Von Datum';
 $_lang['daterangetv.to'] = 'Bis Datum';
 

@@ -64,6 +64,24 @@
             forId: 'inopt_endTV{/literal}{$tv}{literal}',
             html: _('daterangetv.endTVDesc'),
             cls: 'desc-under'
+        }, {
+            cls: "treehillstudio_about",
+            html: '<img width="133" height="40" src="' + DaterangeTV.config.assetsUrl + 'img/treehill-studio-small.png"' + ' srcset="' + DaterangeTV.config.assetsUrl + 'img/treehill-studio-small@2x.png 2x" alt="Treehill Studio">',
+            listeners: {
+                afterrender: function (component) {
+                    component.getEl().select('img').on('click', function () {
+                        var msg = '<span style="display: inline-block; text-align: center"><img src="' + DaterangeTV.config.assetsUrl + 'img/treehill-studio.png" srcset="' + DaterangeTV.config.assetsUrl + 'img/treehill-studio@2x.png 2x" alt"Treehill Studio"><br>' +
+                                '&copy; 2013-2019 by <a href="https://treehillstudio.com" target="_blank">treehillstudio.com</a></span>';
+                        Ext.Msg.show({
+                            title: _('daterangetv') + ' ' + DaterangeTV.config.version,
+                            msg: msg,
+                            buttons: Ext.Msg.OK,
+                            cls: 'treehillstudio_window',
+                            width: 330
+                        });
+                    });
+                }
+            }
         }],
         renderTo: 'tv-input-properties-form{/literal}{$tv}{literal}'
     });

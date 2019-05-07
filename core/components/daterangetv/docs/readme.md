@@ -1,6 +1,6 @@
 # DaterangeTV
 
-Date range custom template variable in MODX Revolution.
+Date range custom template variable for MODX Revolution.
 
 - Author: Thomas Jakobi <thomas.jakobi@partout.info>
 - License: GNU GPLv2

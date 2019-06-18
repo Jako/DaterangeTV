@@ -101,6 +101,12 @@ module.exports = function (grunt) {
                 ],
                 tasks: ['uglify', 'usebanner:js']
             },
+            css: {
+                files: [
+                    'source/**/*.scss'
+                ],
+                tasks: ['sass', 'cssmin', 'usebanner:css']
+            },
             config: {
                 files: [
                     '_build/config.json'

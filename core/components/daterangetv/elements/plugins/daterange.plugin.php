@@ -7,6 +7,7 @@
  *
  * @var modX $modx
  */
+
 $corePath = $modx->getOption('daterangetv.core_path', null, $modx->getOption('core_path') . 'components/daterangetv/');
 $daterangetv = $modx->getService('daterangetv', 'DaterangeTV', $corePath . 'model/daterangetv/', array(
     'core_path' => $corePath

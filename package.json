@@ -1,6 +1,6 @@
 {
   "name": "daterangetv",
-  "description": "Date range custom template variable type",
+  "description": "Date range custom template variable",
   "author": "Thomas Jakobi <thomas.jakobi@partout.info>",
   "devDependencies": {
     "autoprefixer": "^9.5.1",

@@ -1,11 +1,11 @@
 <?php
-
 /**
  * Output Render for Daterange TV
  *
  * @package daterangetv
  * @subpackage output render
  */
+
 class DaterangeOutputRender extends modTemplateVarOutputRender
 {
     /**

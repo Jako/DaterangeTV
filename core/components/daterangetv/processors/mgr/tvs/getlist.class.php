@@ -1,11 +1,11 @@
 <?php
-
 /**
- * Get list of Template Variables
+ * Get list processor for DaterangeTV
  *
  * @package daterangetv
  * @subpackage processor
  */
+
 class DaterangeTVTVsGetListProcessor extends modObjectGetListProcessor
 {
     public $classKey = 'modTemplateVar';

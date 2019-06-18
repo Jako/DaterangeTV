@@ -40,9 +40,10 @@ class DaterangeTV
      * @param modX $modx A reference to the modX instance.
      * @param array $options An array of options. Optional.
      */
-    function __construct(modX &$modx, array $options = array())
+    function __construct(modX &$modx, $options = array())
     {
-        $this->modx = &$modx;
+        $this->modx =& $modx;
+        $this->namespace = $this->getOption('namespace', $options, $this->namespace);
 
         $corePath = $this->getOption('core_path', $options, $this->modx->getOption('core_path') . 'components/daterangetv/');
         $assetsPath = $this->getOption('assets_path', $options, $this->modx->getOption('assets_path') . 'components/daterangetv/');
@@ -52,11 +53,6 @@ class DaterangeTV
         $this->options = array_merge(array(
             'namespace' => $this->namespace,
             'version' => $this->version,
-            'assetsPath' => $assetsPath,
-            'assetsUrl' => $assetsUrl,
-            'cssUrl' => $assetsUrl . 'css/',
-            'jsUrl' => $assetsUrl . 'js/',
-            'imagesUrl' => $assetsUrl . 'images/',
             'corePath' => $corePath,
             'modelPath' => $corePath . 'model/',
             'vendorPath' => $corePath . 'vendor/',
@@ -67,13 +63,18 @@ class DaterangeTV
             'controllersPath' => $corePath . 'controllers/',
             'processorsPath' => $corePath . 'processors/',
             'templatesPath' => $corePath . 'templates/',
-            'connectorUrl' => $assetsUrl . 'connector.php',
+            'assetsPath' => $assetsPath,
+            'assetsUrl' => $assetsUrl,
+            'jsUrl' => $assetsUrl . 'js/',
+            'cssUrl' => $assetsUrl . 'css/',
+            'imagesUrl' => $assetsUrl . 'images/',
+            'connectorUrl' => $assetsUrl . 'connector.php'
         ), $options);
 
         // set default options
         $this->options = array_merge($this->options, array());
 
-        $this->modx->lexicon->load('daterangetv:default');
+        $this->modx->lexicon->load($this->namespace . ':default');
     }
 
     /**
@@ -142,13 +143,13 @@ class DaterangeTV
         $cssSourceUrl = $assetsUrl . '../../../source/css/mgr/';
 
         if ($this->getOption('debug') && $this->getOption('assetsUrl') != MODX_ASSETS_URL . 'components/daterangetv/') {
-            $this->modx->controller->addCss($cssSourceUrl . 'daterangetv.css?v=v' . $this->version);
             $this->modx->controller->addJavascript($jsSourceUrl . 'daterangetv.js?v=v' . $this->version);
             $this->modx->controller->addJavascript($jsSourceUrl . 'daterangetv.templatevar.js?v=v' . $this->version);
             $this->modx->controller->addJavascript($jsSourceUrl . 'daterangetv.renderer.js?v=v' . $this->version);
+            $this->modx->controller->addCss($cssSourceUrl . 'daterangetv.css?v=v' . $this->version);
         } else {
-            $this->modx->controller->addCss($cssUrl . 'daterangetv.min.css?v=v' . $this->version);
             $this->modx->controller->addJavascript($jsUrl . 'daterangetv.min.js?v=v' . $this->version);
+            $this->modx->controller->addCss($cssUrl . 'daterangetv.min.css?v=v' . $this->version);
         }
         $this->modx->controller->addHtml('<script type="text/javascript">DaterangeTV.config = ' . json_encode($this->options, JSON_PRETTY_PRINT) . ';</script>');
     }

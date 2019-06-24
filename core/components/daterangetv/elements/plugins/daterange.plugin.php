@@ -1,6 +1,10 @@
 <?php
 /**
- * Daterange TV plugin
+ * Daterange Runtime Hooks
+ *
+ * Registers custom TV input & output types and includes javascripts on document
+ * edit pages so that the TV can be used from within other extras (i.e. MIGX,
+ * Collections)
  *
  * @package daterangetv
  * @subpackage plugin
@@ -8,12 +12,14 @@
  * @var modX $modx
  */
 
+$eventName = $modx->event->name;
+
 $corePath = $modx->getOption('daterangetv.core_path', null, $modx->getOption('core_path') . 'components/daterangetv/');
 $daterangetv = $modx->getService('daterangetv', 'DaterangeTV', $corePath . 'model/daterangetv/', array(
     'core_path' => $corePath
 ));
 
-switch ($modx->event->name) {
+switch ($eventName) {
     case 'OnManagerPageBeforeRender':
         $modx->controller->addLexiconTopic('daterangetv:tvrenders');
         $daterangetv->includeScriptAssets();

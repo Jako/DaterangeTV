@@ -9,12 +9,21 @@
  * @package daterangetv
  * @subpackage plugin
  *
+ *
+ * @event OnManagerPageBeforeRender
+ * @event OnTVInputRenderList
+ * @event OnTVOutputRenderList
+ * @event OnTVInputPropertiesList
+ * @event OnTVOutputRenderPropertiesList
+ * @event OnDocFormRender
+ *
  * @var modX $modx
  */
 
 $eventName = $modx->event->name;
 
 $corePath = $modx->getOption('daterangetv.core_path', null, $modx->getOption('core_path') . 'components/daterangetv/');
+/** @var DaterangeTV $daterangetv */
 $daterangetv = $modx->getService('daterangetv', 'DaterangeTV', $corePath . 'model/daterangetv/', array(
     'core_path' => $corePath
 ));

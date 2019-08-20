@@ -20,7 +20,7 @@ Install via package manager, create a TV and change the input & output type to '
 
 ## Documentation
 
-For more information please read the documentation on http://jako.github.io/DaterangeTV/
+For more information please read the documentation on https://jako.github.io/DaterangeTV/
 
 ## GitHub Repository
 

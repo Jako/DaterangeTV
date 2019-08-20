@@ -16,7 +16,7 @@ assign the settings as properties to the MODX tag[^1].
 
 Setting | Description | Default
 ------- | ----------- | -------
-Date Format | A between day, month and year by &#124; separated list of [strftime](http://php.net/manual/en/function.strftime.php) placeholders[^2]. | %e&#124; %B &#124;%Y
+Date Format | A between day, month and year by &#124; separated list of [strftime](https://www.php.net/manual/en/function.strftime.php) placeholders[^2]. | %e&#124; %B &#124;%Y
 Separator | String between the first and second part of the daterange. | ` – `
 Locale | Locale the daterange strings are formatted with. | MODX `locale` system setting
 
@@ -31,7 +31,7 @@ Property | Description | Default
 tvname | Name of the Daterange TV. | -
 docid | Resource where the Daterange TV value is received from. | Current resource
 value | Use your own value for the snippet output. The properties `tvname` and `docid` are ignored. | -
-format | A between day, month and year by &#124; separated list of [strftime](http://php.net/manual/en/function.strftime.php) placeholders[^2]. | %e.&#124; %B &#124;%Y
+format | A between day, month and year by &#124; separated list of [strftime](https://www.php.net/manual/en/function.strftime.php) placeholders[^2]. | %e.&#124; %B &#124;%Y
 separator | String between the first and second part of the daterange. | &thinsp;–&thinsp;
 locale | Locale the daterange strings are formatted with. | MODX `locale` system setting
 stripEqualParts | Strip equal parts from the date range output (i.e. strip the year, if start and end of the date range have the same year). | Yes

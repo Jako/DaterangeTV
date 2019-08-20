@@ -1,6 +1,6 @@
 <?php
 /**
- * Input Properties for Daterange TV
+ * DaterangeTV Input Properties
  *
  * @package daterangetv
  * @subpackage input properties

@@ -1,10 +1,3 @@
-/**
- * Daterange TV Init Script
- *
- * @package daterangetv
- * @subpackage init script
- */
-
 var daterangeTV = function (config) {
     config = config || {};
     daterangeTV.superclass.constructor.call(this, config);
@@ -16,4 +9,3 @@ Ext.extend(daterangeTV, Ext.Component, {
 Ext.reg('daterangetv', daterangeTV);
 
 DaterangeTV = new daterangeTV();
-

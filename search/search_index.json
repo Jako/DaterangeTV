@@ -22,7 +22,7 @@
         }, 
         {
             "location": "/installation/", 
-            "text": "Install from MODX Extras\n\n\nSearch for DaterangeTV in the Package Manager of your MODX installation and\ninstall it in there.\n\n\nManual installation\n\n\nIf you can't access the MODX Extras Repository in your MODX installation, you\ncan manually install DaterangeTV.\n\n\n\n\nDownload the transport package from \nMODX Extras\n (or one of the pre built transport packages in \n_packages\n)\n\n\nUpload the zip file to your MODX installation's \ncore/packages\n folder.\n\n\nIn the MODX Manager, navigate to the Package Manager page, and select 'Search locally for packages' from the dropdown button.\n\n\nDaterangeTV should now show up in the list of available packages. Click the corresponding 'Install' button and follow instructions to complete the installation.\n\n\n\n\nBuild it from source\n\n\nTo build and install the package from source you could use \nGit Package\nManagement\n. The GitHub\nrepository of DaterangeTV contains a\n\nconfig.json\n\nto build that package locally. Use this option, if you want to debug DaterangeTV\nand/or contribute bugfixes and enhancements.", 
+            "text": "Install from MODX Extras\n\n\nSearch for DaterangeTV in the Package Manager of your MODX installation and\ninstall it in there.\n\n\nManual installation\n\n\nIf you can't access the MODX Extras Repository in your MODX installation, you\ncan manually install DaterangeTV.\n\n\n\n\nDownload the transport package from \nMODX Extras\n (or one of the pre built transport packages in \n_packages\n)\n\n\nUpload the zip file to your MODX installation's \ncore/packages\n folder or upload it manually in the MODX Package Manager.\n\n\nIn the MODX Manager, navigate to the Package Manager page, and select 'Search locally for packages' from the dropdown button.\n\n\nDaterangeTV should now show up in the list of available packages. Click the corresponding 'Install' button and follow instructions to complete the installation.\n\n\n\n\nBuild it from source\n\n\nTo build and install the package from source you could use \nGit Package\nManagement\n. The GitHub\nrepository of DaterangeTV contains a\n\nconfig.json\n\nto build that package locally. Use this option, if you want to debug DaterangeTV\nand/or contribute bugfixes and enhancements.", 
             "title": "Installation"
         }, 
         {
@@ -32,7 +32,7 @@
         }, 
         {
             "location": "/installation/#manual-installation", 
-            "text": "If you can't access the MODX Extras Repository in your MODX installation, you\ncan manually install DaterangeTV.   Download the transport package from  MODX Extras  (or one of the pre built transport packages in  _packages )  Upload the zip file to your MODX installation's  core/packages  folder.  In the MODX Manager, navigate to the Package Manager page, and select 'Search locally for packages' from the dropdown button.  DaterangeTV should now show up in the list of available packages. Click the corresponding 'Install' button and follow instructions to complete the installation.", 
+            "text": "If you can't access the MODX Extras Repository in your MODX installation, you\ncan manually install DaterangeTV.   Download the transport package from  MODX Extras  (or one of the pre built transport packages in  _packages )  Upload the zip file to your MODX installation's  core/packages  folder or upload it manually in the MODX Package Manager.  In the MODX Manager, navigate to the Package Manager page, and select 'Search locally for packages' from the dropdown button.  DaterangeTV should now show up in the list of available packages. Click the corresponding 'Install' button and follow instructions to complete the installation.", 
             "title": "Manual installation"
         }, 
         {
@@ -67,12 +67,12 @@
         }, 
         {
             "location": "/donate/", 
-            "text": "Support DaterangeTV\n\n\nDaterangeTV\n is and always will be free and open-source, but it still requires many man-hours of development, \nbug-fixing, support in MODX forums and on GitHub between the releases.\n\n\nPlease support the ongoing and past development of \nDaterangeTV\n by making a donation below.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDaterangeTV\n development is sponsored by Treehillstudio \u2013 MODX Development in M\u00fcnsterland.", 
+            "text": "Support DaterangeTV\n\n\nDaterangeTV\n is and always will be free and open-source, but it still requires\nmany man-hours of development, bug-fixing, support in MODX forums and on GitHub\nbetween the releases.\n\n\nPlease support the ongoing and past development of \nDaterangeTV\n by making a\ndonation below.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDaterangeTV\n development is sponsored by Treehillstudio \u2013 MODX Development in M\u00fcnsterland.", 
             "title": "Donate"
         }, 
         {
             "location": "/donate/#support-daterangetv", 
-            "text": "DaterangeTV  is and always will be free and open-source, but it still requires many man-hours of development, \nbug-fixing, support in MODX forums and on GitHub between the releases.  Please support the ongoing and past development of  DaterangeTV  by making a donation below.           DaterangeTV  development is sponsored by Treehillstudio \u2013 MODX Development in M\u00fcnsterland.", 
+            "text": "DaterangeTV  is and always will be free and open-source, but it still requires\nmany man-hours of development, bug-fixing, support in MODX forums and on GitHub\nbetween the releases.  Please support the ongoing and past development of  DaterangeTV  by making a\ndonation below.            DaterangeTV  development is sponsored by Treehillstudio \u2013 MODX Development in M\u00fcnsterland.", 
             "title": "Support DaterangeTV"
         }
     ]

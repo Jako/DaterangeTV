@@ -2,7 +2,6 @@
   cursor: pointer;
   height: 40px;
   opacity: .25;
-  -webkit-transition: opacity 0.5s;
   transition: opacity 0.5s;
   margin-top: 20px;
 }

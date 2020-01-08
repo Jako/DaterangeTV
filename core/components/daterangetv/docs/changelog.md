@@ -8,7 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Change log level of not existing template variable message to debug
 - PHP/MODX version check
-- Normalized/refactored code 
+- Normalized/refactored code
+- Prevent an error, when $modx->resource is not set
 
 ## [1.3.4] - 2018-11-17
 ### Changed

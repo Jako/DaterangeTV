@@ -520,7 +520,12 @@ encoded array:</p>
 <h2 id="column-renderer">Column Renderer<a class="headerlink" href="#column-renderer" title="Permanent link">&para;</a></h2>
 <p>The package contains a column renderer for i.e. MIGX or Collections. In
 Collections you have to insert <code>DaterangeTV.Renderer</code> in the renderer option of
-the grid column.</p>
+the grid column. The name option has to be filled with the tv name prepended
+with <code>tv_</code>.</p>
+<p>You can't render the full value, when the <code>end value template variable</code> is
+enabled. Then the colum will only contain the first value and both values could
+be rendered with the <code>DaterangeTV.Renderer</code>. If you want to use only one column,
+you have to fill the Collections snippet renderer option with <code>daterange</code>.</p>
 <div class="footnote">
 <hr />
 <ol>
@@ -588,7 +593,7 @@ the grid column.</p>
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-          <div>&copy; 2013-2019 <a href="https://treehillstudio.com">Treehill Studio</a></div>
+          <div>&copy; 2013-2020 <a href="https://treehillstudio.com">Treehill Studio</a></div>
         
         <div>powered by
           <a href="http://www.mkdocs.org" title="MkDocs">

@@ -5,6 +5,7 @@
  * @package daterangetv
  * @subpackage language
  */
+
 $_lang['daterangetv'] = 'DaterangeTV';
 
 $_lang['daterange'] = 'Date Range (From <> To)';

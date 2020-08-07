@@ -58,7 +58,14 @@ encoded array:
 
 The package contains a column renderer for i.e. MIGX or Collections. In
 Collections you have to insert `DaterangeTV.Renderer` in the renderer option of
-the grid column.
+the grid column. The name option has to be filled with the tv name prepended
+with `tv_`.
+
+You can't render the full value, when the `end value template variable` is
+enabled. Then the colum will only contain the first value and both values could
+be rendered with the `DaterangeTV.Renderer`. If you want to use only one column,
+you have to fill the Collections snippet renderer option with `daterange`.
+ 
 
 [^1]: The daterange template tariable could be formatted in template or template chunks with the following tag syntax: ```[[*tvname?format=`%e| %B |%Y`&locale=`de_DE.utf8`]]```
 [^2]: If the output type is set to `Date Range (From <> To)` the output will be formatted removing equal days and months (and years - by showing only the start date).

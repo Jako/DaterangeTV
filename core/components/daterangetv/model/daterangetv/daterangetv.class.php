@@ -26,7 +26,7 @@ class DaterangeTV
      * The version
      * @var string $version
      */
-    public $version = '1.3.5';
+    public $version = '1.3.6';
 
     /**
      * The class options

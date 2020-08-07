@@ -5,6 +5,7 @@
  * @package daterangetv
  * @subpackage lexicon
  */
+
 $_lang['daterangetv.daterange.value'] = 'The value that should be formatted';
 $_lang['daterangetv.daterange.tvname'] = 'Name of the Daterange TV';
 $_lang['daterangetv.daterange.docid'] = 'Resource where the Daterange TV value is received from';

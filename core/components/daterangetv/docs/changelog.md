@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.6] - 2020-08-07
+### Changed
+- Allow deselecting a selected second template variable for the end part of the daterange
+
 ## [1.3.5] - 2020-01-08
 ### Changed
 - Change log level of not existing template variable message to debug
@@ -26,11 +30,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.3.1] - 2016-11-22
 ### Changed
-- Improved backwards compatibility when switching a datereange TV to use a second TV for an end value [#6]
+- Improved backwards compatibility when switching a daterange TV to use a second TV for an end value [#6]
 
 ## [1.3.0] - 2016-09-14
 ### Added
-- Optional second template variable for the end part of the datereange. Could be set to i.e. a hidden template variable
+- Optional second template variable for the end part of the daterange. Could be set to i.e. a hidden template variable
 
 ## [1.2.3] - 2016-02-07
 ### Added

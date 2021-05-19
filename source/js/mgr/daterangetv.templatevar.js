@@ -118,7 +118,6 @@ Ext.extend(DaterangeTV.combo.DaterangeTV, MODx.Panel, {
             to: Ext.getCmp('to' + this.config.tvId, this.config.daterangeFormat).getValue()
         };
         this.setTVValue(values);
-
     },
     setTVValue: function (values) {
         var oldFromToDate = this.getTVValue();

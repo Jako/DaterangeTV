@@ -21,7 +21,7 @@
         listeners: {
             afterrender: function (component) {
                 Ext.getCmp('modx-panel-tv-input-properties').addListener('resize', function () {
-                    component.setWidth(Ext.getCmp('modx-input-props').getWidth()).doLayout();
+                    component.setWidth(Ext.getCmp('modx-widget-props').getWidth()).doLayout();
                 });
             }
         },

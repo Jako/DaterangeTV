@@ -7,7 +7,7 @@
  */
 
 $_lang['setting_daterangetv.debug'] = 'Debug';
-$_lang['setting_daterangetv.debug_desc'] = 'Log debug informations in MODX error log.';
+$_lang['setting_daterangetv.debug_desc'] = 'Log debug information in the MODX error log.';
 $_lang['setting_daterangetv.format'] = 'Date Format';
 $_lang['setting_daterangetv.format_desc'] = 'A between day, month and year by &#124; separated list of <a href="https://www.php.net/manual/en/function.strftime.php" target="_blank">strftime</a> placeholders.';
 $_lang['setting_daterangetv.manager_format'] = 'Manager Date Format';

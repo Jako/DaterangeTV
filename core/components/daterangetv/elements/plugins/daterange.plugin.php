@@ -47,4 +47,4 @@ switch ($eventName) {
     case 'OnDocFormRender':
         $daterangetv->includeScriptAssets();
         break;
-};
+}

@@ -3,7 +3,7 @@
  * Get list processor for DaterangeTV
  *
  * @package daterangetv
- * @subpackage processor
+ * @subpackage processors
  */
 
 class DaterangeTVTVsGetListProcessor extends modObjectGetListProcessor

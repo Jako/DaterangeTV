@@ -13,7 +13,7 @@ $_lang['daterangetv.from'] = 'From Date';
 $_lang['daterangetv.to'] = 'To Date';
 
 $_lang['daterangetv.dateFormat'] = 'Date Format';
-$_lang['daterangetv.dateFormatDesc'] = 'The format must be valid according to <a href="http://docs.sencha.com/ext-js/3-4/#!/api/Date-static-method-parseDate" target="_blank">Date.parseDate</a> (defaults to manager date format).';
+$_lang['daterangetv.dateFormatDesc'] = 'The format must be valid according to <a href="https://docs.sencha.com/extjs/3.4.0/#!/api/Date" target="_blank">Ext JS Date</a> (defaults to manager date format).';
 $_lang['daterangetv.endTV'] = 'End Value Template Variable';
 $_lang['daterangetv.endTVDesc'] = 'Template Variable that contains the end value of the daterange. If used, the DaterangeTV contains only the start value. The end value template variable should be created as a hidden template variable type.';
 

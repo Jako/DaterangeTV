@@ -5,7 +5,7 @@ The following input options could be set in template variable settings:
 Setting | Description | Default
 ------- | ----------- | -------
 Allow Blank | If set to No, MODX will not allow the user to save the Resource until a valid, non-blank value has been entered in the From Date input. | Yes
-Date Format | The format must be valid according to [Date.parseDate](http://dev.sencha.com/playpen/docs/output/Date.html). | Manager date format
+Date Format | The format must be valid according to [Ext JS Date](https://docs.sencha.com/extjs/3.4.0/#!/api/Date). | Manager date format
 End Value Template Variable | Template Variable that contains the end value of the daterange. If used, the DaterangeTV contains only the start value. The end value template variable should be created as a hidden template variable type. | -
 
 ## Output Options

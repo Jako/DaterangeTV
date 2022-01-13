@@ -1,6 +1,6 @@
 <?php
 /**
- * Snippet/Output Filter for Daterange TV
+ * Snippet/Output Filter for DaterangeTV
  *
  * @package daterangetv
  * @subpackage snippet/output filter
@@ -13,9 +13,9 @@
 
 // Load daterangetv class
 $corePath = $modx->getOption('daterangetv.core_path', null, $modx->getOption('core_path') . 'components/daterangetv/');
-$daterangetv = $modx->getService('daterangetv', 'DaterangeTV', $corePath . 'model/daterangetv/', array(
+$daterangetv = $modx->getService('daterangetv', 'DaterangeTV', $corePath . 'model/daterangetv/', [
     'core_path' => $corePath
-));
+]);
 
 // Get script properties
 $value = $modx->getOption('value', $scriptProperties, '', true);
@@ -29,18 +29,18 @@ if (!empty($tag)) {
 }
 
 if (!$value) {
-    $tv = $modx->getObject('modTemplateVar', array('name' => $tvname));
+    $tv = $modx->getObject('modTemplateVar', ['name' => $tvname]);
     if ($tv) {
         // Get the raw content of the TV
         $value = $tv->getValue($docid);
         $inputProperties = $tv->get('input_properties');
         // end value is stored in a different template variable
         if (isset ($inputProperties['endTV'])) {
-            $resource = $modx->getObject('modTemplateVarResource', array(
+            $resource = $modx->getObject('modTemplateVarResource', [
                 'tmplvarid' => $inputProperties['endTV'],
                 'contentid' => $docid,
-            ), true);
-            $endValue = ($resource && $resource instanceof modTemplateVarResource) ? $resource->get('value') : '';
+            ], true);
+            $endValue = ($resource instanceof modTemplateVarResource) ? $resource->get('value') : '';
             $value = ($endValue != '') ? $value . '||' . $endValue : $value;
         }
     } else {

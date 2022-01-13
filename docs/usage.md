@@ -28,8 +28,8 @@ the following properties:
 
 Property | Description | Default
 -------- | ----------- | -------
-tvname | Name of the Daterange TV. | -
-docid | Resource where the Daterange TV value is received from. | Current resource
+tvname | Name of the DaterangeTV. | -
+docid | Resource where the DaterangeTV value is received from. | Current resource
 value | Use your own value for the snippet output. The properties `tvname` and `docid` are ignored. | -
 format | A between day, month and year by &#124; separated list of [strftime](https://www.php.net/manual/en/function.strftime.php) placeholders[^2]. | %e.&#124; %B &#124;%Y
 separator | String between the first and second part of the daterange. | &thinsp;–&thinsp;

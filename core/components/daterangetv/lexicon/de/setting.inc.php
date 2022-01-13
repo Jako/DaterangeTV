@@ -5,7 +5,6 @@
  * @package daterangetv
  * @subpackage lexicon
  */
-
 $_lang['setting_daterangetv.debug'] = 'Debug';
 $_lang['setting_daterangetv.debug_desc'] = 'Debug-Informationen im MODX Fehlerprotokoll ausgeben.';
 $_lang['setting_daterangetv.format'] = 'Datumsformat';

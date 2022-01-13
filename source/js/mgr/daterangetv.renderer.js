@@ -1,5 +1,5 @@
 /**
- * Output Renderer for Daterange TV
+ * Output Renderer for DaterangeTV
  *
  * @package daterangetv
  * @subpackage output renderer

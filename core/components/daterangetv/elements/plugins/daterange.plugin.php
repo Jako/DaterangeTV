@@ -1,6 +1,6 @@
 <?php
 /**
- * Daterange TV Runtime Hooks
+ * DaterangeTV Runtime Hooks
  *
  * Registers custom TV input & output types and includes javascripts on document
  * edit pages so that the TV can be used from within other extras (i.e. MIGX,
@@ -17,34 +17,28 @@
  * @event OnDocFormRender
  *
  * @var modX $modx
+ * @var array $scriptProperties
  */
 
-$eventName = $modx->event->name;
+$className = 'TreehillStudio\DaterangeTV\Plugins\Events\\' . $modx->event->name;
 
 $corePath = $modx->getOption('daterangetv.core_path', null, $modx->getOption('core_path') . 'components/daterangetv/');
 /** @var DaterangeTV $daterangetv */
-$daterangetv = $modx->getService('daterangetv', 'DaterangeTV', $corePath . 'model/daterangetv/', array(
+$daterangetv = $modx->getService('daterangetv', 'DaterangeTV', $corePath . 'model/daterangetv/', [
     'core_path' => $corePath
-));
+]);
 
-switch ($eventName) {
-    case 'OnManagerPageBeforeRender':
-        $modx->controller->addLexiconTopic('daterangetv:tvrenders');
-        $daterangetv->includeScriptAssets();
-        break;
-    case 'OnTVInputRenderList':
-        $modx->event->output($corePath . 'elements/tv/input/');
-        break;
-    case 'OnTVOutputRenderList':
-        $modx->event->output($corePath . 'elements/tv/output/');
-        break;
-    case 'OnTVInputPropertiesList':
-        $modx->event->output($corePath . 'elements/tv/input/options/');
-        break;
-    case 'OnTVOutputRenderPropertiesList':
-        $modx->event->output($corePath . 'elements/tv/output/options/');
-        break;
-    case 'OnDocFormRender':
-        $daterangetv->includeScriptAssets();
-        break;
+if ($daterangetv) {
+    if (class_exists($className)) {
+        $handler = new $className($modx, $scriptProperties);
+        if (get_class($handler) == $className) {
+            $handler->run();
+        } else {
+            $modx->log(xPDO::LOG_LEVEL_ERROR, $className. ' could not be initialized!', '', 'DaterangeTV Plugin');
+        }
+    } else {
+        $modx->log(xPDO::LOG_LEVEL_ERROR, $className. ' was not found!', '', 'DaterangeTV Plugin');
+    }
 }
+
+return;

@@ -1,50 +1,21 @@
 <?php
 /**
- * Get list processor for DaterangeTV
+ * Get list Template Variables
  *
  * @package daterangetv
  * @subpackage processors
  */
 
-class DaterangeTVTVsGetListProcessor extends modObjectGetListProcessor
+use TreehillStudio\DaterangeTV\Processors\ObjectGetListProcessor;
+
+class DaterangeTVTVsGetListProcessor extends ObjectGetListProcessor
 {
     public $classKey = 'modTemplateVar';
-    public $languageTopics = array('daterangetv:default');
     public $defaultSortField = 'name';
     public $defaultSortDirection = 'ASC';
-    public $objectType = 'modTemplateVar';
+    public $objectType = 'daterangetv.templatevar';
 
-    /**
-     * {@inheritDoc}
-     * @return xPDOQuery
-     */
-    public function prepareQueryAfterCount(xPDOQuery $c)
-    {
-        $id = $this->getProperty('id');
-        if (!empty($id)) {
-            $c->where(array(
-                'id:IN' => array_map('intval', explode('|', $id))
-            ));
-        }
-        return $c;
-    }
-
-    /**
-     * {@inheritDoc}
-     * @return array
-     */
-    public function beforeIteration(array $list)
-    {
-        if (!$this->getProperty('id')) {
-            $empty = array(
-                'id' => 0,
-                'name' => '(' . $this->modx->lexicon('daterangetv.none') . ')'
-            );
-            $list[] = $empty;
-        }
-
-        return $list;
-    }
+    protected $search = ['name'];
 }
 
 return 'DaterangeTVTVsGetListProcessor';

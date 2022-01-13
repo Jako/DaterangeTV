@@ -9,7 +9,8 @@ DaterangeTV.combo.TV = function (config) {
         pageSize: 20,
         url: DaterangeTV.config.connectorUrl,
         baseParams: {
-            action: 'mgr/tvs/getlist'
+            action: 'mgr/tvs/getlist',
+            combo: true
         }
     });
     DaterangeTV.combo.TV.superclass.constructor.call(this, config);

@@ -26,7 +26,7 @@ class DaterangeInputRender extends modTemplateVarInputRender
      */
     public function getLexiconTopics()
     {
-        return array('daterangetv:default');
+        return ['daterangetv:default'];
     }
 
     /**
@@ -36,19 +36,19 @@ class DaterangeInputRender extends modTemplateVarInputRender
      * @param array $params
      * @return void
      */
-    public function process($value, array $params = array())
+    public function process($value, array $params = [])
     {
         $dateFormat = $this->modx->getOption('daterangetv.date_format', $params, $this->modx->getOption('manager_date_format'));
 
         // set daterange value
-        $daterange = array();
+        $daterange = [];
         if ($params['endTV']) {
             // end value is stored in a different template variable
-            $resource = $this->modx->getObject('modTemplateVarResource', array(
+            $resource = $this->modx->getObject('modTemplateVarResource', [
                 'tmplvarid' => $params['endTV'],
                 'contentid' => $this->modx->resource->get('id'),
-            ), true);
-            $endValue = ($resource && $resource instanceof modTemplateVarResource) ? $resource->get('value') : '';
+            ]);
+            $endValue = ($resource instanceof modTemplateVarResource) ? $resource->get('value') : '';
             if (!$endValue && (strpos($value, '||'))) {
                 // maintain backwards compatibility
                 $daterange = explode('||', $value);
@@ -69,9 +69,6 @@ class DaterangeInputRender extends modTemplateVarInputRender
             }
         }
         $this->setPlaceholder('daterange', $daterange);
-
-        // add lexicon topic
-        $this->modx->controller->addLexiconTopic('daterangetv:tvrenders');
 
         // set params
         $params['allowBlank'] = ($params['allowBlank'] === 'false' || $params['allowBlank'] === 0 || $params['allowBlank'] === false) ? 'false' : 'true';

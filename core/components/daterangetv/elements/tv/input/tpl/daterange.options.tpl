@@ -6,7 +6,7 @@
         {/foreach}{literal}
     };
     var oc = {
-        'change': {
+        change: {
             fn: function () {
                 Ext.getCmp('modx-panel-tv').markDirty();
             }, scope: this
@@ -16,6 +16,7 @@
         xtype: 'panel',
         layout: 'form',
         applyTo: 'modx-input-props',
+        cls: 'daterangetv-props',
         border: false,
         labelAlign: 'top',
         listeners: {
@@ -23,7 +24,10 @@
                 Ext.getCmp('modx-panel-tv-input-properties').addListener('resize', function () {
                     component.setWidth(Ext.getCmp('modx-input-props').getWidth()).doLayout();
                 });
-            }
+                Ext.getCmp('modx-tv-tabs').addListener('tabchange', function () {
+                    component.setWidth(Ext.getCmp('modx-input-props').getWidth()).doLayout();
+                });
+            },
         },
         items: [{
             xtype: 'combo-boolean',
@@ -89,7 +93,7 @@
                 afterrender: function (component) {
                     component.getEl().select('img').on('click', function () {
                         var msg = '<span style="display: inline-block; text-align: center"><img src="' + DaterangeTV.config.assetsUrl + 'img/treehill-studio.png" srcset="' + DaterangeTV.config.assetsUrl + 'img/treehill-studio@2x.png 2x" alt="Treehill Studio"><br>' +
-                            '&copy; 2013-2020 by <a href="https://treehillstudio.com" target="_blank">treehillstudio.com</a></span>';
+                            '&copy; 2013-2022 by <a href="https://treehillstudio.com" target="_blank">treehillstudio.com</a></span>';
                         Ext.Msg.show({
                             title: _('daterangetv') + ' ' + DaterangeTV.config.version,
                             msg: msg,
@@ -100,9 +104,9 @@
                     });
                 }
             }
-        }],
-        renderTo: 'tv-input-properties-form{/literal}{$tv}{literal}'
+        }]
     });
+    MODx.helpUrl = 'https://jako.github.io/DaterangeTV/usage/';
     // ]]>
 </script>
 {/literal}

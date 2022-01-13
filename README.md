@@ -4,8 +4,8 @@ Date range custom template variable in MODX Revolution.
 
 ## Features
 
-With this MODX custom template variable two depending datepicker inputs could be
-used to insert a date range in a MODX resource.
+DaterangeTV is a custom template variable for MODX Revolution. The template
+variable displays two interdependent datapicker inputs.
 
 ## Installation
 

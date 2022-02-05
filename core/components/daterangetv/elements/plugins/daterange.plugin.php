@@ -2,19 +2,8 @@
 /**
  * DaterangeTV Runtime Hooks
  *
- * Registers custom TV input & output types and includes javascripts on document
- * edit pages so that the TV can be used from within other extras (i.e. MIGX,
- * Collections)
- *
  * @package daterangetv
  * @subpackage plugin
- *
- * @event OnManagerPageBeforeRender
- * @event OnTVInputRenderList
- * @event OnTVOutputRenderList
- * @event OnTVInputPropertiesList
- * @event OnTVOutputRenderPropertiesList
- * @event OnDocFormRender
  *
  * @var modX $modx
  * @var array $scriptProperties

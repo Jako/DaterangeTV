@@ -1,3 +1,5 @@
+[![Default Lexicon](https://hosted.weblate.org/widgets/modx-extras/-/modx-daterangetv-standard/svg-badge.svg)](https://hosted.weblate.org/projects/modx-extras/modx-daterangetv-standard/)
+
 # DaterangeTV
 
 Date range custom template variable in MODX Revolution.
@@ -19,3 +21,11 @@ Install via package manager, create a TV and change the input & output type to
 ## Documentation
 
 For more information please read the [documentation](https://jako.github.io/DaterangeTV/).
+
+## License
+
+The project is licensed under the [GPLv2 license](https://github.com/Jako/DaterangeTV/blob/master/core/components/daterangetv/docs/license.md).
+
+## Translations
+
+Translations of the package can be made for the [Default Lexicon](https://hosted.weblate.org/projects/modx-extras/modx-daterangetv-standard/), the [Properties Lexicon](https://hosted.weblate.org/projects/modx-extras/modx-daterangetv-properties/) and the [System Setting Lexicon](https://hosted.weblate.org/projects/modx-extras/modx-daterangetv-system-settings/)

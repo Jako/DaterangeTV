@@ -15,7 +15,7 @@ $_lang['daterangetv.endTV'] = 'Endwert Template Variable';
 $_lang['daterangetv.endTVDesc'] = 'Template Variable die das Ende des Zeitraums enthält. Die DaterangeTV enthält bei gesetztem Wert nur noch den Startwert. Die Endwert Template Variable sollte als versteckte Template Variable angelegt werdem.';
 $_lang['daterangetv.from'] = 'Von Datum';
 $_lang['daterangetv.localeOutput'] = 'Locale';
-$_lang['daterangetv.localeOutputDesc'] = '<a href="https://www.php.net/manual/de/function.setlocale.php">Locale</a> mit der der Zeitraum ausgegeben wird (Standard: MODX Systemeinstellung "locale").';
+$_lang['daterangetv.localeOutputDesc'] = '<a href="https://www.php.net/manual/de/function.setlocale.php">Locale</a> mit welcher der Zeitraum ausgegeben wird (Standard: MODX Systemeinstellung "locale").';
 $_lang['daterangetv.separatorOutput'] = 'Trennzeichen';
 $_lang['daterangetv.separatorOutputDesc'] = 'Zeichenkette, die zwischen dem ersten und dem zweiten Teil des Zeitraums ausgegeben wird.';
 $_lang['daterangetv.to'] = 'Bis Datum';

@@ -8,8 +8,8 @@
 
 namespace TreehillStudio\DaterangeTV\Snippets;
 
-use DaterangeTV;
 use modX;
+use TreehillStudio\DaterangeTV\DaterangeTV;
 
 /**
  * Class Snippet
@@ -51,7 +51,6 @@ abstract class Snippet
         $this->modx =& $modx;
 
         $corePath = $this->modx->getOption('daterangetv.core_path', null, $this->modx->getOption('core_path') . 'components/daterangetv/');
-        /** @var DaterangeTV $daterangetv */
         $this->daterangetv = $this->modx->getService('daterangetv', 'DaterangeTV', $corePath . 'model/daterangetv/', [
             'core_path' => $corePath
         ]);

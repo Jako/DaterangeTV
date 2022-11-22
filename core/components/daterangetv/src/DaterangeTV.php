@@ -121,33 +121,17 @@ class DaterangeTV
     }
 
     /**
-     * Gets an option through $this->getOption and cast the value to a true boolean automatically,
-     * including strings "false", "true", "yes" and "no".
+     * Get Boolean Option
      *
-     * @param string $name
+     * @param string $key
      * @param array $options
-     * @param bool $default
+     * @param mixed $default
      * @return bool
      */
-    public function getBooleanOption($name, array $options = null, $default = null)
+    public function getBooleanOption($key, $options = [], $default = null)
     {
-        $option = $this->getOption($name, $options, $default);
-        return $this->castValueToBool($option);
-    }
-
-    /**
-     * Turns a value into a boolean. This checks for "false", "true", "yes" and "no" strings,
-     * as well as anything PHP can automatically cast to a boolean value.
-     *
-     * @param $value
-     * @return bool
-     */
-    public function castValueToBool($value)
-    {
-        if (in_array(strtolower($value), ['false', 'no'])) {
-            return false;
-        }
-        return (bool)$value;
+        $option = $this->getOption($key, $options, $default);
+        return ($option === 'true' || $option === true || $option === '1' || $option === 1);
     }
 
     /**

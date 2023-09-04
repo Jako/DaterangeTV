@@ -2,7 +2,7 @@
 /**
  * Main Class for DaterangeTV
  *
- * Copyright 2013-2022 by Thomas Jakobi <office@treehillstudio.com>
+ * Copyright 2013-2023 by Thomas Jakobi <office@treehillstudio.com>
  *
  * @package daterangetv
  * @subpackage classfile

@@ -55,7 +55,7 @@ class Daterange extends OutputFilter
                     $resource = $this->modx->getObject('modTemplateVarResource', [
                         'tmplvarid' => $inputProperties['endTV'],
                         'contentid' => $docid,
-                    ], true);
+                    ]);
                     $endValue = ($resource instanceof modTemplateVarResource) ? $resource->get('value') : '';
                     $value = ($endValue != '') ? $value . '||' . $endValue : $value;
                 }

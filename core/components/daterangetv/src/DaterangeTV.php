@@ -215,7 +215,7 @@ class DaterangeTV
 
         // set locale
         if ($locale) {
-            $currentLocale = setlocale(LC_ALL, 0);
+            $currentLocale = setlocale(LC_ALL, '0');
             if (!setlocale(LC_ALL, $locale) && $debug) {
                 $this->modx->log(xPDO::LOG_LEVEL_DEBUG, 'Locale ' . $locale . 'not valid!', '', 'DaterangeTV');
             }

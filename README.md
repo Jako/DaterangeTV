@@ -1,4 +1,4 @@
-[![Default Lexicon](https://hosted.weblate.org/widgets/modx-extras/-/modx-daterangetv-standard/svg-badge.svg)](https://hosted.weblate.org/projects/modx-extras/modx-daterangetv-standard/)
+[![Default Lexicon](https://hosted.weblate.org/widgets/modx-extras/daterangetv/standard/svg-badge.svg)](https://hosted.weblate.org/projects/modx-extras/daterangetv/standard/)
 
 # DaterangeTV
 
@@ -28,4 +28,4 @@ The project is licensed under the [GPLv2 license](https://github.com/Jako/Datera
 
 ## Translations
 
-Translations of the package can be made for the [Default Lexicon](https://hosted.weblate.org/projects/modx-extras/modx-daterangetv-standard/), the [Properties Lexicon](https://hosted.weblate.org/projects/modx-extras/modx-daterangetv-properties/) and the [System Setting Lexicon](https://hosted.weblate.org/projects/modx-extras/modx-daterangetv-system-settings/)
+Translations of the package can be made for the [Default Lexicon](https://hosted.weblate.org/projects/modx-extras/daterangetv/standard/), the [Properties Lexicon](https://hosted.weblate.org/projects/modx-extras/daterangetv/properties/) and the [System Setting Lexicon](https://hosted.weblate.org/projects/modx-extras/daterangetv/system-settings/)

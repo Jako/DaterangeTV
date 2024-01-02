@@ -1,4 +1,4 @@
-[![Default Lexicon](https://hosted.weblate.org/widgets/modx-extras/daterangetv/standard/svg-badge.svg)](https://hosted.weblate.org/projects/modx-extras/daterangetv/standard/)
+[![Default Lexicon](https://hosted.weblate.org/widget/modx-extras/daterangetv/standard/svg-badge.svg)](https://hosted.weblate.org/projects/modx-extras/daterangetv/standard/)
 
 # DaterangeTV
 

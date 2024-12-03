@@ -50,7 +50,7 @@ So the following snippet call could be used:
 The snippet could work as an output filter, but then the options have to be a json
 encoded array:
 
-```
+```html
 [[*daterangetv:daterange=`{"format":"%d|%m.|%Y","separator":"–","locale":"de_DE.utf8"}`]]
 ```
 

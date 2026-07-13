@@ -56,7 +56,7 @@ DaterangeTV.combo.DaterangeTV = function (config) {
         width: 400,
         items: [{
             xtype: 'panel',
-            columnWidth: .5,
+            columnWidth: 0.5,
             layout: 'form',
             labelAlign: 'top',
             border: false,
@@ -83,7 +83,7 @@ DaterangeTV.combo.DaterangeTV = function (config) {
             ]
         }, {
             xtype: 'panel',
-            columnWidth: .5,
+            columnWidth: 0.5,
             layout: 'form',
             labelAlign: 'top',
             border: false,

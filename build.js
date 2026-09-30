@@ -162,7 +162,7 @@ async function taskBump() {
         search: /[*-] PHP (v)?\d.\d.*/g,
         replace: '* PHP ' + phpversion + '+'
     }], 'requirements in');
-    replaceInFile('core/components/cronmanager/composer.json', [{
+    replaceInFile('core/components/daterangetv/composer.json', [{
         search: /"php": "\d.\d.*?"/g,
         replace: '"php": "' + phpversion + '"'
     }, {
@@ -171,7 +171,7 @@ async function taskBump() {
     }], 'requirements in');
     const buildFiles = [
         '_build/config.json',
-        'core/components/cronmanager/composer.json',
+        'core/components/daterangetv/composer.json',
     ];
     buildFiles.forEach(file => {
         replaceInFile(file, [{

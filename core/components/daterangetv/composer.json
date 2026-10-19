@@ -1,6 +1,7 @@
 {
   "name": "treehillstudio/daterangetv",
   "description": "Time Range Custom Template Variable",
+  "version": "1.4.4",
   "authors": [
     {
       "name": "Thomas Jakobi",
